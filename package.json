@@ -4,5 +4,11 @@
   "workspaces": [
     "client",
     "server"
-  ]
+  ],
+  "scripts": {
+    "check-conflict-formatting-rules": "npx eslint-config-prettier '*.{js,jsx,ts,tsx,json}'",
+    "lint:fix": "eslint --fix '**/src/*.{js,jsx,ts,tsx,json}'",
+    "prettier:fix": "prettier --write '*.{js,jsx,ts,tsx,json}'",
+    "integrated-code-manager": "npm run check-conflict-formatting-rules && npm run prettier:fix && npm run lint:fix"
+  }
 }
