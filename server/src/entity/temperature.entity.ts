@@ -10,9 +10,9 @@ export class TemperatureOption {
   @JoinColumn({ name: 'food_id', referencedColumnName: 'id' })
   food: Food;
 
-  @Column('decimal', { precision: 10, scale: 0 })
-  hot: number;
+  @Column('decimal', { precision: 10, scale: 0, nullable: true })
+  hot: number | null;
 
-  @Column('decimal', { precision: 10, scale: 0 })
-  cool: number;
+  @Column('decimal', { precision: 10, scale: 0, nullable: true })
+  cool: number | null;
 }

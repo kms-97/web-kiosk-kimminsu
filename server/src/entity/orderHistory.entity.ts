@@ -20,14 +20,14 @@ export class OrderHistory {
   @Column({ type: 'enum', enum: payment })
   payment: string;
 
-  @Column('boolean')
+  @Column('boolean', { default: false })
   cancel: boolean;
 
-  @Column('datetime', { name: 'craete_at' })
-  createdAt: string;
+  @Column('datetime', { name: 'create_at', default: () => 'CURRENT_TIMESTAMP' })
+  createdAt: Date;
 
-  @Column('datetime', { name: 'updated_at' })
-  updatedAt: string;
+  @Column('datetime', { name: 'updated_at', default: () => 'CURRENT_TIMESTAMP' })
+  updatedAt: Date;
 
   @OneToMany(() => OrderItem, (item) => item.orderHistoryId)
   orderItems: OrderItem[];
