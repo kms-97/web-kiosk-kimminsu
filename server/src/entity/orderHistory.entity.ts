@@ -1,10 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 import { OrderItem } from './orderItem.entity';
-
-enum payment {
-  cash = 'cash',
-  card = 'card',
-}
+import { PAYMENT } from 'src/types';
 
 @Entity('ORDER_HISTORY_TB')
 export class OrderHistory {
@@ -17,17 +13,17 @@ export class OrderHistory {
   @Column('decimal', { precision: 10, scale: 0, name: 'total_price' })
   totalPrice: number;
 
-  @Column({ type: 'enum', enum: payment })
+  @Column({ type: 'enum', enum: PAYMENT })
   payment: string;
 
-  @Column('boolean')
+  @Column('boolean', { default: false })
   cancel: boolean;
 
-  @Column('datetime', { name: 'craete_at' })
-  createdAt: string;
+  @Column('datetime', { name: 'create_at', default: () => 'CURRENT_TIMESTAMP' })
+  createdAt: Date;
 
-  @Column('datetime', { name: 'updated_at' })
-  updatedAt: string;
+  @Column('datetime', { name: 'updated_at', default: () => 'CURRENT_TIMESTAMP' })
+  updatedAt: Date;
 
   @OneToMany(() => OrderItem, (item) => item.orderHistoryId)
   orderItems: OrderItem[];

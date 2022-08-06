@@ -9,10 +9,10 @@ export class Category {
   @Column('char', { length: 10 })
   name: string;
 
-  @Column('datetime', { name: 'craete_at' })
+  @Column('datetime', { name: 'create_at', default: () => 'current_timestamp' })
   createdAt: string;
 
-  @Column('datetime', { name: 'updated_at' })
+  @Column('datetime', { name: 'updated_at', default: () => 'current_timestamp' })
   updatedAt: string;
 
   @OneToMany(() => Food, (food) => food.categoryId)

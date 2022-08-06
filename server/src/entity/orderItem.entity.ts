@@ -1,19 +1,9 @@
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Food } from './food.entity';
 import { OrderHistory } from './orderHistory.entity';
+import { SIZE, TEMPERATURE } from 'src/types';
 
-enum SIZE {
-  small = 's',
-  medium = 'm',
-  large = 'l',
-}
-
-enum TEMPERATURE {
-  hot = 'h',
-  ice = 'c',
-}
-
-@Entity()
+@Entity('ORDER_ITEM_TB')
 export class OrderItem {
   @PrimaryGeneratedColumn()
   id: number;
@@ -36,11 +26,11 @@ export class OrderItem {
   eachPrice: number;
 
   @Column({ type: 'enum', enum: SIZE })
-  size: string;
+  size: SIZE;
 
   @Column({ type: 'enum', enum: TEMPERATURE })
-  temperature: string;
+  temperature: TEMPERATURE;
 
-  @Column('datetime', { name: 'created_at' })
+  @Column('datetime', { name: 'created_at', default: () => 'current_timestamp' })
   createdAt: string;
 }

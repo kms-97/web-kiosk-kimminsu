@@ -10,12 +10,12 @@ export class SizeOption {
   @JoinColumn({ name: 'food_id', referencedColumnName: 'id' })
   food: Food;
 
-  @Column('decimal', { precision: 10, scale: 0 })
-  small: number;
+  @Column('decimal', { precision: 10, scale: 0, nullable: true })
+  small: number | null;
 
-  @Column('decimal', { precision: 10, scale: 0 })
-  medium: number;
+  @Column('decimal', { precision: 10, scale: 0, nullable: true })
+  medium: number | null;
 
-  @Column('decimal', { precision: 10, scale: 0 })
-  large: number;
+  @Column('decimal', { precision: 10, scale: 0, nullable: true })
+  large: number | null;
 }

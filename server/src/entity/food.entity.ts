@@ -1,10 +1,14 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn, OneToMany } from 'typeorm';
 import { Category } from './category.entity';
+import { OrderItem } from './orderItem.entity';
 
 @Entity('FOOD_TB')
 export class Food {
   @PrimaryGeneratedColumn()
   id: number;
+
+  @Column('int', { name: 'category_id' })
+  categoryId: number;
 
   @Column('char', { length: 30 })
   name: string;
@@ -17,5 +21,8 @@ export class Food {
 
   @ManyToOne(() => Category, (category) => category.foods)
   @JoinColumn({ name: 'category_id' })
-  categoryId: Category;
+  categories: Category;
+
+  @OneToMany(() => OrderItem, (item) => item.foodId)
+  orders: OrderItem[];
 }
