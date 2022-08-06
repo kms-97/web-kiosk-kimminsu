@@ -86,7 +86,7 @@ export class OrderService {
       return orderNum as number;
     } catch (e) {
       await queryRunner.manager.query('rollback');
-      return 0;
+      throw e;
     } finally {
       await queryRunner.manager.query('unlock tables');
       await queryRunner.release();
