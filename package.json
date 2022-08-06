@@ -9,6 +9,19 @@
     "check-conflict-formatting-rules": "npx eslint-config-prettier '*.{js,jsx,ts,tsx,json}'",
     "lint:fix": "eslint --fix '**/src/*.{js,jsx,ts,tsx,json}'",
     "prettier:fix": "prettier --write '*.{js,jsx,ts,tsx,json}'",
-    "integrated-code-manager": "npm run check-conflict-formatting-rules && npm run prettier:fix && npm run lint:fix"
+    "integrated-code-manager": "npm run check-conflict-formatting-rules && npm run prettier:fix && npm run lint:fix",
+    "client:build": "npm run build -w client",
+    "client:start": "npm run start -w client",
+    "server:start": "npm run start -w server",
+    "server:start-dev": "npm run start:dev -w server"
+  },
+  "devDependencies": {
+    "eslint": "^8.21.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.7.1"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.1"
   }
 }
