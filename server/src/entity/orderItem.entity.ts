@@ -1,17 +1,7 @@
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Food } from './food.entity';
 import { OrderHistory } from './orderHistory.entity';
-
-enum SIZE {
-  small = 's',
-  medium = 'm',
-  large = 'l',
-}
-
-enum TEMPERATURE {
-  hot = 'h',
-  ice = 'c',
-}
+import { SIZE, TEMPERATURE } from 'src/types';
 
 @Entity('ORDER_ITEM_TB')
 export class OrderItem {

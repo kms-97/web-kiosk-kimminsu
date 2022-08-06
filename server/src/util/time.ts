@@ -1,12 +1,4 @@
-export class date {
-  year: number;
-  month: number;
-  date: number;
-
-  toString() {
-    return `${this.year}-${this.month}-${this.date}`;
-  }
-}
+import { date } from 'src/types';
 
 export const getToday = (): date => {
   const date = new Date();
