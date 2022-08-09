@@ -2,16 +2,26 @@ import React, { useRef, useEffect } from 'react';
 import { getTranslateValues } from '../../util/transform';
 import styles from './FlipContainer.module.scss';
 
-interface props {
+interface props extends React.ComponentProps<'div'> {
   children: React.ReactElement;
   direction: 'x' | 'y';
   rightFlipEvent?: () => void;
   leftFilpEvent?: () => void;
 }
 
-const FlipContainer = ({ children, direction, rightFlipEvent, leftFilpEvent }: props) => {
+const FlipContainer = ({
+  children,
+  direction,
+  rightFlipEvent,
+  leftFilpEvent,
+  className,
+}: props) => {
   const targetRef = useRef<HTMLElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const classString = `
+    ${styles.flip}
+    ${className}
+  `;
 
   useEffect(() => {
     const $target = targetRef.current;
@@ -84,7 +94,7 @@ const FlipContainer = ({ children, direction, rightFlipEvent, leftFilpEvent }: p
   };
 
   return (
-    <div className={styles.flip} ref={containerRef}>
+    <div className={classString} ref={containerRef}>
       {React.cloneElement(children, {
         ref: targetRef,
       })}
