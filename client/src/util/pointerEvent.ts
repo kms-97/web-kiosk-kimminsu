@@ -1,7 +1,13 @@
 import React from 'react';
 
-const click = (threshold: number, callback: Function, arg?: any): React.PointerEventHandler => {
+const click = (
+  threshold: number,
+  callback: Function,
+  arg?: any,
+  exact?: boolean,
+): React.PointerEventHandler => {
   return (e) => {
+    if (exact && e.target !== e.currentTarget) return;
     const $target = e.currentTarget as HTMLElement;
     const [startX, startY] = [e.pageX, e.pageY];
 
