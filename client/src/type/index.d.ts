@@ -65,9 +65,9 @@ declare interface FLEXPROPS {
   wrap: 'nowrap' | 'wrap';
   overflow?: 'overflowX' | 'overflowY';
   gap?: string;
-  alignItems?: 'start' | 'center';
-  alignContent?: 'start' | 'center';
-  justifyContent?: 'start' | 'center' | 'spaceBetween' | 'spaceAround';
+  alignItems?: 'start' | 'center' | 'spaceBetween' | 'spaceAround' | 'end';
+  alignContent?: 'start' | 'center' | 'spaceBetween' | 'spaceAround' | 'end';
+  justifyContent?: 'start' | 'center' | 'spaceBetween' | 'spaceAround' | 'end';
 }
 
 declare interface SIZING {

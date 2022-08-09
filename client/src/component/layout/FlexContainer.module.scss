@@ -35,6 +35,15 @@
     &-start {
       align-items: start;
     }
+    &-spaceBetween {
+      align-items: space-between;
+    }
+    &-spaceAround {
+      align-items: space-around;
+    }
+    &-end {
+      align-items: end;
+    }
   }
 
   &.alignContent {
@@ -43,6 +52,15 @@
     }
     &-start {
       align-content: start;
+    }
+    &-spaceBetween {
+      align-content: space-between;
+    }
+    &-spaceAround {
+      align-content: space-around;
+    }
+    &-end {
+      align-content: end;
     }
   }
 
@@ -58,6 +76,9 @@
     }
     &-spaceAround {
       justify-content: space-around;
+    }
+    &-end {
+      justify-content: end;
     }
   }
 }
