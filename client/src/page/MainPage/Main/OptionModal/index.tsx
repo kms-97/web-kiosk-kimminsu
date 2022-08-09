@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { FlexContainer, Img } from '../../../../component';
+import { FlexContainer, Img, TransperentButton } from '../../../../component';
 import SizeOption from './SizeOption';
 import TemperatureOption from './TemperatureOption';
 import styles from './OptionModal.module.scss';
@@ -33,7 +33,7 @@ const OptionModal = ({ food, getOptions }: props) => {
 
   return (
     <div className={styles.modal}>
-      <FlexContainer flow="column" wrap="nowrap" gap="20px">
+      <FlexContainer flow="column" wrap="nowrap" gap="20px" className={styles.info}>
         <FlexContainer flow="row" wrap="nowrap" justifyContent="spaceAround">
           <Img src={food.imgURL} description={food.name} className={styles.img} />
           <FlexContainer flow="column" wrap="nowrap" gap="5px" className={styles.name}>
@@ -47,6 +47,10 @@ const OptionModal = ({ food, getOptions }: props) => {
         <SizeOption size={size} changeEachPrice={changeEachPrice} />
         <div>온도</div>
         <TemperatureOption temperature={temperature} changeEachPrice={changeEachPrice} />
+      </FlexContainer>
+      <FlexContainer flow="row" wrap="nowrap">
+        <TransperentButton className={`${styles.button} ${styles.grey}`}>취소</TransperentButton>
+        <TransperentButton className={`${styles.button} ${styles.primary}`}>완료</TransperentButton>
       </FlexContainer>
     </div>
   );

@@ -1,15 +1,35 @@
 .modal {
   width: 80%;
-  padding: 5% 10%;
   background-color: white;
-  font-size: 20px;
 
-  .img {
-    width: 260px;
+  .info {
+    margin: 5% auto;
+    font-size: 20px;
+    width: 440px;
+
+    .img {
+      width: 260px;
+    }
+
+    .name {
+      width: auto;
+      padding: 0 20px;
+    }
   }
 
-  .name {
-    width: auto;
-    padding: 0 20px;
+  .button {
+    width: 50%;
+    height: 60px;
+    font-size: 20px;
+
+    &.grey {
+      background-color: grey;
+      color: white;
+    }
+
+    &.primary {
+      background-color: #2ac1bc;
+      color: white;
+    }
   }
 }
