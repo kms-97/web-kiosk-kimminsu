@@ -18,9 +18,9 @@ const DragContainer = ({ children }: props) => {
     const $target = targetRef.current;
     if ($target) {
       ($target.style as CSSStyleDeclaration).cursor = `grabbing`;
-      targetRef.current?.addEventListener('pointermove', mouseMoveHandler);
-      targetRef.current?.addEventListener('pointerup', mouseUpHandler);
-      targetRef.current?.addEventListener('pointerleave', mouseUpHandler);
+      $target.addEventListener('pointermove', mouseMoveHandler);
+      $target.addEventListener('pointerup', mouseUpHandler);
+      $target.addEventListener('pointerleave', mouseUpHandler);
     }
   };
 
