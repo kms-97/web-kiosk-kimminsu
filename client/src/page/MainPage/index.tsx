@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState, useLayoutEffect, useContext } from 'react';
-import { CategoriesContext, RenderCategoryIdContext } from '../../context/CategoryContext';
+import { CategoriesContext, RenderCategoryIdContext } from '../../context';
 import { getCategory, getFood, getOption } from '../../api';
 import Main from './Main';
 import Header from './Header';

@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { FlexContainer, FlipContainer } from '../../../component';
-import { ActiveCategoryIdContext } from '../../../context/CategoryContext';
+import { ActiveCategoryIdContext } from '../../../context';
 import CategoryPage from './CategoryPage';
 import styles from './Main.module.scss';
 

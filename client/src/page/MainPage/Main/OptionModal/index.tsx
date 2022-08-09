@@ -12,8 +12,7 @@ import TemperatureOption from './TemperatureOption';
 import styles from './OptionModal.module.scss';
 import UnitOption from './UnitOption';
 import { click } from '../../../../util/pointerEvent';
-import OrderContext from '../../../../context/Order';
-import SelectedFoodContext from '../../../../context/SelectedFood';
+import { OrderContext, SelectedFoodContext } from '../../../../context';
 
 interface props {
   food: FOOD;

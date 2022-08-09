@@ -21,8 +21,5 @@ const SelectedFoodProvider = ({ children }: { children: React.ReactNode }) => {
 
   return <SelectedFoodContext.Provider value={context}>{children}</SelectedFoodContext.Provider>;
 };
-const { Consumer: SelectedFoodConsumer } = SelectedFoodContext;
 
-export { SelectedFoodProvider, SelectedFoodConsumer };
-
-export default SelectedFoodContext;
+export { SelectedFoodProvider, SelectedFoodContext };

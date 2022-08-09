@@ -1,4 +1,4 @@
-import GeneralProvider from './context/GeneralProvider';
+import { GeneralProvider } from './context';
 import MainPage from './page/MainPage';
 
 function App() {

@@ -46,8 +46,5 @@ const OrderProvider = ({ children }: { children: React.ReactNode }) => {
 
   return <OrderContext.Provider value={context}>{children}</OrderContext.Provider>;
 };
-const { Consumer: OrderConsumer } = OrderContext;
 
-export { OrderProvider, OrderConsumer };
-
-export default OrderContext;
+export { OrderProvider, OrderContext };

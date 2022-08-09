@@ -1,4 +1,4 @@
-import { CategoryProvider } from './CategoryContext';
+import { CategoryProvider } from './Category';
 import { OrderProvider } from './Order';
 import { SelectedFoodProvider } from './SelectedFood';
 

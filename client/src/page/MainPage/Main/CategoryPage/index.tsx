@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { FlexContainer, ModalContainer } from '../../../../component';
-import SelectedFoodContext from '../../../../context/SelectedFood';
+import { SelectedFoodContext } from '../../../../context';
 import { click } from '../../../../util/pointerEvent';
 import FoodItem from '../FoodItem';
 import OptionModal from '../OptionModal';
