@@ -8,10 +8,9 @@ import styles from './CategoryPage.module.scss';
 
 interface props {
   foods: FOOD[];
-  getOptions: (arg: number) => { size: SIZE; temperature: TEMPERATURE };
 }
 
-const CategoryPage = ({ foods, getOptions }: props) => {
+const CategoryPage = ({ foods }: props) => {
   const selectedFood = useContext(SelectedFoodContext);
 
   const selectFood = (foodId: number) => {
@@ -36,7 +35,7 @@ const CategoryPage = ({ foods, getOptions }: props) => {
       </FlexContainer>
       {selectedFood?.state ? (
         <ModalContainer onPointerDown={closeModal}>
-          <OptionModal food={selectedFood.state} getOptions={getOptions} closeModal={closeModal} />
+          <OptionModal food={selectedFood.state} closeModal={closeModal} />
         </ModalContainer>
       ) : (
         ''

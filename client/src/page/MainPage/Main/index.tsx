@@ -6,10 +6,9 @@ import styles from './Main.module.scss';
 
 interface props {
   foods: FOOD[][];
-  getOptions: (arg: number) => { size: SIZE; temperature: TEMPERATURE };
 }
 
-const Main = ({ foods, getOptions }: props) => {
+const Main = ({ foods }: props) => {
   const activeCategoryId = useContext(ActiveCategoryIdContext);
 
   return (
@@ -28,7 +27,7 @@ const Main = ({ foods, getOptions }: props) => {
           className={styles.container}
         >
           {foods.map((foods, index) => (
-            <CategoryPage foods={foods} key={index} getOptions={getOptions} />
+            <CategoryPage foods={foods} key={index} />
           ))}
         </FlexContainer>
       </FlipContainer>

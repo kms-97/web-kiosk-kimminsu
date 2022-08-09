@@ -1,14 +1,14 @@
 import { useCallback, useEffect, useState, useLayoutEffect, useContext } from 'react';
-import { CategoriesContext, RenderCategoryIdContext } from '../../context';
+import { CategoriesContext, OptionContext, RenderCategoryIdContext } from '../../context';
 import { getCategory, getFood, getOption } from '../../api';
 import Main from './Main';
 import Header from './Header';
 
 const MainPage = () => {
-  const categories = useContext(CategoriesContext);
   const renderCategoryId = useContext(RenderCategoryIdContext);
+  const categories = useContext(CategoriesContext);
+  const options = useContext(OptionContext);
   const [foods, setFoods] = useState<FOOD[]>([]);
-  const [options, setOptions] = useState<OPTION>({ size: {}, temperature: {} });
   const [displayCategoryFoods, setdisplayCategoryFoods] = useState<FOOD[][]>([[]]);
 
   useEffect(() => {
@@ -32,20 +32,14 @@ const MainPage = () => {
     Promise.all([foodData, categoryData, optionData]).then(([food, category, option]) => {
       setFoods(food.data);
       categories?.action.setState(category.data);
-      setOptions(option.data);
+      options?.action.setState(option.data);
     });
   }, []);
-
-  const getOptions = (id: number) => {
-    const size = options.size[`${id}`];
-    const temperature = options.temperature[`${id}`];
-    return { size, temperature };
-  };
 
   return (
     <>
       <Header categories={categories!.state} />
-      <Main foods={displayCategoryFoods} getOptions={getOptions} />
+      <Main foods={displayCategoryFoods} />
     </>
   );
 };
