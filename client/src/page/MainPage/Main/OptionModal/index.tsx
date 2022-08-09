@@ -12,16 +12,23 @@ interface props {
 
 const OptionModal = ({ food, getOptions }: props) => {
   const [eachPrice, setEachPrice] = useState<number>(0);
+  const [selectedSize, setSelectedSize] = useState<string>('s');
+  const [selectedTemperature, setSelectedTemperature] = useState<string>('h');
   const [unit, setUnit] = useState<number>(1);
-  const { size, temperature } = getOptions(food.id);
+  const options = useRef(getOptions(food.id));
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    options.current = getOptions(food.id);
     setEachPrice(Number(food.basePrice));
   }, [food]);
 
-  const changeEachPrice = (beforePrice: number, afterPrice: number) => {
-    setEachPrice((prev) => prev - beforePrice + afterPrice);
-  };
+  useEffect(() => {
+    setEachPrice(
+      Number(food.basePrice) +
+        Number(options.current.size[selectedSize])! +
+        Number(options.current.temperature[selectedTemperature])!,
+    );
+  }, [selectedSize, selectedTemperature]);
 
   const increaseUnit = () => {
     setUnit((prev) => prev + 1);
@@ -44,9 +51,17 @@ const OptionModal = ({ food, getOptions }: props) => {
         <div>수량</div>
         <UnitOption unit={unit} increaseUnit={increaseUnit} decreaseUnit={decreaseUnit} />
         <div>크기</div>
-        <SizeOption size={size} changeEachPrice={changeEachPrice} />
+        <SizeOption
+          option={options.current.size}
+          size={selectedSize}
+          selectSize={setSelectedSize}
+        />
         <div>온도</div>
-        <TemperatureOption temperature={temperature} changeEachPrice={changeEachPrice} />
+        <TemperatureOption
+          option={options.current.temperature}
+          temperature={selectedTemperature}
+          selectTemperature={setSelectedTemperature}
+        />
       </FlexContainer>
       <FlexContainer flow="row" wrap="nowrap">
         <TransperentButton className={`${styles.button} ${styles.grey}`}>취소</TransperentButton>
