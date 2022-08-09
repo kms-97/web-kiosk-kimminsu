@@ -12,7 +12,15 @@ html {
 body {
   position: relative;
   width: 700px;
-  height: 100vh;
+  height: 1200px;
+}
+
+header {
+  height: 70px;
+}
+
+main {
+  height: 1000px;
 }
 
 #root {

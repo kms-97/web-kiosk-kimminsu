@@ -21,7 +21,14 @@ const CategoryPage = ({ foods, getOptions }: props) => {
 
   return (
     <>
-      <FlexContainer flow="row" wrap="wrap" className={styles.page} justifyContent="start">
+      <FlexContainer
+        flow="row"
+        wrap="wrap"
+        className={styles.page}
+        justifyContent="start"
+        alignContent="start"
+        alignItems="start"
+      >
         {foods.map((food) => (
           <FoodItem food={food} onClick={selectItem} key={food.id} />
         ))}
