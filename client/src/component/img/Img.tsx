@@ -12,7 +12,7 @@ const Img = ({ src, description, className }: props) => {
     ${className ?? ''}
   `;
 
-  return <img src={src} alt={description} className={classString} onDragStart={() => false} />;
+  return <img src={src} alt={description} className={classString} draggable={false} />;
 };
 
 export default Img;
