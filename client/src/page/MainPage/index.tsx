@@ -1,38 +1,28 @@
-import { useCallback, useEffect, useState, useRef, useLayoutEffect } from 'react';
+import { useCallback, useEffect, useState, useLayoutEffect, useContext } from 'react';
+import { CategoriesContext, RenderCategoryIdContext } from '../../context/CategoryContext';
 import { getCategory, getFood, getOption } from '../../api';
 import Main from './Main';
 import Header from './Header';
 
 const MainPage = () => {
-  const [categories, setCategories] = useState<CATEGORY[]>([]);
+  const categories = useContext(CategoriesContext);
+  const renderCategoryId = useContext(RenderCategoryIdContext);
   const [foods, setFoods] = useState<FOOD[]>([]);
   const [options, setOptions] = useState<OPTION>({ size: {}, temperature: {} });
   const [displayCategoryFoods, setdisplayCategoryFoods] = useState<FOOD[][]>([[]]);
-  const [activeCategoryId, setActiveCategoryId] = useState<number>(0);
-  const maxCategoryId = useRef<number>(0);
-  const minCategoryId = useRef<number>(0);
 
   useEffect(() => {
     initDatas();
   }, []);
 
-  useEffect(() => {
-    const { max, min } = getMinMaxCategoryId();
-    maxCategoryId.current = max;
-    minCategoryId.current = min;
-    setActiveCategoryId(min);
-  }, [categories]);
-
   useLayoutEffect(() => {
-    const newFoods = [];
-    const nextCategoryId = getNextCategoryId(activeCategoryId);
-    const prevCategoryId = getPrevCategoryId(activeCategoryId);
+    const newFoods: FOOD[][] = [];
+    renderCategoryId?.state.forEach((id) => {
+      newFoods.push(foods.filter(({ categoryId }) => categoryId === id));
+    });
 
-    newFoods.push(foods.filter(({ categoryId }) => categoryId === prevCategoryId));
-    newFoods.push(foods.filter(({ categoryId }) => categoryId === activeCategoryId));
-    newFoods.push(foods.filter(({ categoryId }) => categoryId === nextCategoryId));
     setdisplayCategoryFoods(newFoods);
-  }, [activeCategoryId, foods]);
+  }, [renderCategoryId, foods]);
 
   const initDatas = useCallback(async () => {
     const foodData = getFood();
@@ -41,7 +31,7 @@ const MainPage = () => {
 
     Promise.all([foodData, categoryData, optionData]).then(([food, category, option]) => {
       setFoods(food.data);
-      setCategories(category.data);
+      categories?.action.setState(category.data);
       setOptions(option.data);
     });
   }, []);
@@ -52,53 +42,10 @@ const MainPage = () => {
     return { size, temperature };
   };
 
-  const getAllCategoryId = () => {
-    const ids: Array<number> = [];
-    categories.forEach(({ id }) => {
-      ids.push(id);
-    });
-    return ids;
-  };
-
-  const getMinMaxCategoryId = () => {
-    const ids = getAllCategoryId();
-    return {
-      max: Math.max(...ids),
-      min: Math.min(...ids),
-    };
-  };
-
-  const getNextCategoryId = (targetId: number) => {
-    if (targetId === maxCategoryId.current) return minCategoryId.current;
-    return targetId + 1;
-  };
-
-  const getPrevCategoryId = (targetId: number) => {
-    if (targetId === minCategoryId.current) return maxCategoryId.current;
-    return targetId - 1;
-  };
-
-  const decreaseActiveCategoryId = () => {
-    setActiveCategoryId((id) => getPrevCategoryId(id));
-  };
-
-  const increaseActiveCategoryId = () => {
-    setActiveCategoryId((id) => getNextCategoryId(id));
-  };
-
   return (
     <>
-      <Header
-        onClick={setActiveCategoryId}
-        categories={categories}
-        activeCategoryId={activeCategoryId}
-      />
-      <Main
-        foods={displayCategoryFoods}
-        getOptions={getOptions}
-        prevCategory={decreaseActiveCategoryId}
-        nextCategory={increaseActiveCategoryId}
-      />
+      <Header categories={categories!.state} />
+      <Main foods={displayCategoryFoods} getOptions={getOptions} />
     </>
   );
 };

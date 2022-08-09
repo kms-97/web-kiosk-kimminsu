@@ -1,22 +1,23 @@
+import { useContext } from 'react';
 import { TransperentButton } from '../../../../component';
+import { ActiveCategoryIdContext } from '../../../../context/CategoryContext';
 import { click } from '../../../../util/pointerEvent';
 import styles from './CategoryTab.module.scss';
 
 interface props {
   id: number;
   name: string;
-  activeCategoryId: number;
-  onClick: (id: number) => void;
 }
 
-const CategoryTab = ({ id, name, activeCategoryId, onClick }: props) => {
-  const changeActiveCategory = click(10, onClick, id);
+const CategoryTab = ({ id, name }: props) => {
+  const activeCategoryId = useContext(ActiveCategoryIdContext);
+  const changeActiveCategory = click(10, activeCategoryId?.action.setState!, id);
 
   return (
     <TransperentButton
       key={id}
       onPointerDown={changeActiveCategory}
-      isSelected={id === activeCategoryId}
+      isSelected={id === activeCategoryId?.state}
       className={styles.button}
     >
       <div>{name}</div>

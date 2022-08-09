@@ -1,21 +1,23 @@
+import { useContext } from 'react';
 import { FlexContainer, FlipContainer } from '../../../component';
+import { ActiveCategoryIdContext } from '../../../context/CategoryContext';
 import CategoryPage from './CategoryPage';
 import styles from './Main.module.scss';
 
 interface props {
   foods: FOOD[][];
   getOptions: (arg: number) => { size: SIZE; temperature: TEMPERATURE };
-  nextCategory: () => void;
-  prevCategory: () => void;
 }
 
-const Main = ({ foods, getOptions, nextCategory, prevCategory }: props) => {
+const Main = ({ foods, getOptions }: props) => {
+  const activeCategoryId = useContext(ActiveCategoryIdContext);
+
   return (
     <main>
       <FlipContainer
         direction="x"
-        rightFlipEvent={nextCategory}
-        leftFilpEvent={prevCategory}
+        rightFlipEvent={activeCategoryId?.action.increase}
+        leftFilpEvent={activeCategoryId?.action.decrease}
         className={styles.container}
       >
         <FlexContainer

@@ -5,22 +5,15 @@ import CategoryTab from './CategoryTab';
 
 interface props {
   categories: CATEGORY[];
-  onClick: (id: number) => void;
-  activeCategoryId: number;
 }
 
-const Header = ({ categories, onClick, activeCategoryId }: props) => {
+const Header = ({ categories }: props) => {
   return (
     <header>
       <DragContainer>
         <NavContainer flow="row" wrap="nowrap">
           {categories.map(({ id, name }) => (
-            <CategoryTab
-              id={id}
-              name={name}
-              onClick={onClick}
-              activeCategoryId={activeCategoryId}
-            />
+            <CategoryTab id={id} name={name} />
           ))}
         </NavContainer>
       </DragContainer>
