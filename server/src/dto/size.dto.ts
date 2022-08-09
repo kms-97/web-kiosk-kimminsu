@@ -3,9 +3,9 @@ import { SizeOption } from 'src/entity/size.entity';
 export class SizeDto {
   constructor(
     private readonly id: number,
-    private readonly small: number | null,
-    private readonly medium: number | null,
-    private readonly large: number | null,
+    private readonly s: number | null,
+    private readonly m: number | null,
+    private readonly l: number | null,
   ) {}
 
   getId() {
