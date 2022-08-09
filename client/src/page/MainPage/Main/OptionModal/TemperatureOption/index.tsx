@@ -35,7 +35,7 @@ const TemperatureOption = ({ temperature, changeEachPrice }: props) => {
         className={styles.button}
       >
         <div>{name}</div>
-        <div>{addPrice}</div>
+        <div>+{addPrice}</div>
       </OutlineButton>
     );
   };
