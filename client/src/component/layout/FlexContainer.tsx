@@ -21,7 +21,7 @@ const FlexContatiner = (
     ${styles.container}
     ${styles[flow]}
     ${styles[wrap]}
-    ${alignItems ? `${styles[`alignItem-${alignItems}`]}` : ''}
+    ${alignItems ? `${styles[`alignItems-${alignItems}`]}` : ''}
     ${alignContent ? `${styles[`alignContent-${alignContent}`]}` : ''}
     ${justifyContent ? `${styles[`justifyContent-${justifyContent}`]}` : ''}
     ${className ?? ''}
