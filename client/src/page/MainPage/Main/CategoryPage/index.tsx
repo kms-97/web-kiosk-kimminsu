@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { FlexContainer, ModalContainer } from '../../../../component';
+import { DragContainer, FlexContainer, ModalContainer } from '../../../../component';
 import { SelectedFoodContext } from '../../../../context';
 import { click } from '../../../../util/pointerEvent';
 import FoodItem from '../FoodItem';
@@ -21,18 +21,20 @@ const CategoryPage = ({ foods }: props) => {
 
   return (
     <>
-      <FlexContainer
-        flow="row"
-        wrap="wrap"
-        className={styles.page}
-        justifyContent="start"
-        alignContent="start"
-        alignItems="start"
-      >
-        {foods.map((food) => (
-          <FoodItem food={food} onClick={selectFood} key={food.id} />
-        ))}
-      </FlexContainer>
+      <DragContainer direction="y">
+        <FlexContainer
+          flow="row"
+          wrap="wrap"
+          className={styles.page}
+          justifyContent="start"
+          alignContent="start"
+          alignItems="start"
+        >
+          {foods.map((food) => (
+            <FoodItem food={food} onClick={selectFood} key={food.id} />
+          ))}
+        </FlexContainer>
+      </DragContainer>
       {selectedFood?.state ? (
         <ModalContainer onPointerDown={closeModal}>
           <OptionModal food={selectedFood.state} closeModal={closeModal} />
