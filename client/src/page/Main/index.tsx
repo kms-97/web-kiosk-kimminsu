@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState, useRef } from 'react';
+import { useCallback, useEffect, useState, useRef, useLayoutEffect } from 'react';
 import { getCategory, getFood, getOption } from '../../api';
 import Body from './Body';
 import Header from './Header';
@@ -24,7 +24,7 @@ const MainPage = () => {
     setActiveCategoryId(min);
   }, [categories]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const newFoods = [];
     const nextCategoryId = getNextCategoryId(activeCategoryId);
     const prevCategoryId = getPrevCategoryId(activeCategoryId);

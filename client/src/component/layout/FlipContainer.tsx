@@ -17,6 +17,12 @@ const FlipContainer = ({ children, direction, rightFlipEvent, leftFilpEvent }: p
     const $target = targetRef.current;
     if ($target) {
       ($target.style as CSSStyleDeclaration).transform = `translateX(-${$target.clientWidth}px)`;
+    }
+  }, [children]);
+
+  useEffect(() => {
+    const $target = targetRef.current;
+    if ($target) {
       $target.addEventListener('pointerdown', mouseDownHandler);
     }
   }, []);
@@ -62,9 +68,16 @@ const FlipContainer = ({ children, direction, rightFlipEvent, leftFilpEvent }: p
 
         if (currentX > leftLimit) {
           if (leftFilpEvent) leftFilpEvent();
+          ($target.style as CSSStyleDeclaration).transform = `translateX(0px)`;
+          return;
         } else if (currentX < rightLimit) {
           if (rightFlipEvent) rightFlipEvent();
+          ($target.style as CSSStyleDeclaration).transform = `translateX(-${
+            $target.clientWidth * 2
+          }px)`;
+          return;
         }
+
         ($target.style as CSSStyleDeclaration).transform = `translateX(-${$target.clientWidth}px)`;
       }
     }
