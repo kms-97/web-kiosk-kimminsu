@@ -66,6 +66,7 @@ declare interface FLEXPROPS {
   overflow?: 'overflowX' | 'overflowY';
   gap?: string;
   align?: 'start' | 'center';
+  justify?: 'start' | 'center' | 'spaceBetween' | 'spaceAround';
 }
 
 declare interface SIZING {
