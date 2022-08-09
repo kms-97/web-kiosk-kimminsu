@@ -8,9 +8,10 @@ import styles from './CategoryPage.module.scss';
 interface props {
   foods: FOOD[];
   getOptions: (arg: number) => { size: SIZE; temperature: TEMPERATURE };
+  addOrderItems: (item: ORDERITEM) => void;
 }
 
-const CategoryPage = ({ foods, getOptions }: props) => {
+const CategoryPage = ({ foods, getOptions, addOrderItems }: props) => {
   const [selectedItem, setSelectedItem] = useState<FOOD>();
 
   const selectItem = (foodId: number) => {
@@ -35,7 +36,12 @@ const CategoryPage = ({ foods, getOptions }: props) => {
       </FlexContainer>
       {selectedItem ? (
         <ModalContainer onPointerDown={closeModal}>
-          <OptionModal food={selectedItem} getOptions={getOptions} />
+          <OptionModal
+            food={selectedItem}
+            getOptions={getOptions}
+            closeModal={closeModal}
+            addOrderItems={addOrderItems}
+          />
         </ModalContainer>
       ) : (
         ''

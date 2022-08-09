@@ -12,12 +12,18 @@ declare interface FOOD {
   categoryId: number;
 }
 
-declare interface ORDERITEM {
+declare class ORDERITEM {
   id: number;
   name: string;
   unit: number;
   options: OPTION;
   eachPrice: number;
+
+  isEqual(item: ORDERITEM): boolean {
+    if (this.id === item.id && JSON.stringify(this.options) === JSON.stringify(item.options))
+      return true;
+    return false;
+  }
 }
 
 declare interface OPTION {

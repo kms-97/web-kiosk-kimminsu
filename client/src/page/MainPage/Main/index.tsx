@@ -5,11 +5,12 @@ import styles from './Main.module.scss';
 interface props {
   foods: FOOD[][];
   getOptions: (arg: number) => { size: SIZE; temperature: TEMPERATURE };
+  addOrderItems: (item: ORDERITEM) => void;
   nextCategory: () => void;
   prevCategory: () => void;
 }
 
-const Main = ({ foods, getOptions, nextCategory, prevCategory }: props) => {
+const Main = ({ foods, getOptions, nextCategory, prevCategory, addOrderItems }: props) => {
   return (
     <main>
       <FlipContainer
@@ -26,7 +27,12 @@ const Main = ({ foods, getOptions, nextCategory, prevCategory }: props) => {
           className={styles.container}
         >
           {foods.map((foods, index) => (
-            <CategoryPage foods={foods} key={index} getOptions={getOptions} />
+            <CategoryPage
+              foods={foods}
+              key={index}
+              getOptions={getOptions}
+              addOrderItems={addOrderItems}
+            />
           ))}
         </FlexContainer>
       </FlipContainer>

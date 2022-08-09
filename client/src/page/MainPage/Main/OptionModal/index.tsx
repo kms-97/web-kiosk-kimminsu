@@ -1,16 +1,19 @@
-import { useState, useEffect } from 'react';
+import { useState, useLayoutEffect, PointerEventHandler, useRef, useEffect } from 'react';
 import { FlexContainer, Img, TransperentButton } from '../../../../component';
 import SizeOption from './SizeOption';
 import TemperatureOption from './TemperatureOption';
 import styles from './OptionModal.module.scss';
 import UnitOption from './UnitOption';
+import { click } from '../../../../util/pointerEvent';
 
 interface props {
   food: FOOD;
   getOptions: (arg: number) => { size: SIZE; temperature: TEMPERATURE };
+  closeModal: PointerEventHandler;
+  addOrderItems: (item: ORDERITEM) => void;
 }
 
-const OptionModal = ({ food, getOptions }: props) => {
+const OptionModal = ({ food, getOptions, closeModal, addOrderItems }: props) => {
   const [eachPrice, setEachPrice] = useState<number>(0);
   const [selectedSize, setSelectedSize] = useState<string>('s');
   const [selectedTemperature, setSelectedTemperature] = useState<string>('h');
@@ -38,6 +41,15 @@ const OptionModal = ({ food, getOptions }: props) => {
     setUnit((prev) => prev - 1);
   };
 
+  const addToCart = click(10, addOrderItems, {
+    id: food.id,
+    name: food.name,
+    unit,
+    size: selectedSize,
+    temperature: selectedTemperature,
+    eachPrice,
+  });
+
   return (
     <div className={styles.modal}>
       <FlexContainer flow="column" wrap="nowrap" gap="20px" className={styles.info}>
@@ -64,8 +76,15 @@ const OptionModal = ({ food, getOptions }: props) => {
         />
       </FlexContainer>
       <FlexContainer flow="row" wrap="nowrap">
-        <TransperentButton className={`${styles.button} ${styles.grey}`}>취소</TransperentButton>
-        <TransperentButton className={`${styles.button} ${styles.primary}`}>완료</TransperentButton>
+        <TransperentButton className={`${styles.button} ${styles.grey}`} onPointerDown={closeModal}>
+          취소
+        </TransperentButton>
+        <TransperentButton
+          className={`${styles.button} ${styles.primary}`}
+          onPointerDown={addToCart}
+        >
+          완료
+        </TransperentButton>
       </FlexContainer>
     </div>
   );
