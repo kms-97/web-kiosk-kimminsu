@@ -1,6 +1,6 @@
 import { FlexContainer, FlipContainer } from '../../../component';
 import CategoryPage from './CategoryPage';
-import styles from './Body.module.scss';
+import styles from './Main.module.scss';
 
 interface props {
   foods: FOOD[][];
@@ -9,7 +9,7 @@ interface props {
   prevCategory: () => void;
 }
 
-const Body = ({ foods, getOptions, nextCategory, prevCategory }: props) => {
+const Main = ({ foods, getOptions, nextCategory, prevCategory }: props) => {
   return (
     <main>
       <FlipContainer
@@ -34,4 +34,4 @@ const Body = ({ foods, getOptions, nextCategory, prevCategory }: props) => {
   );
 };
 
-export default Body;
+export default Main;

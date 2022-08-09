@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState, useRef, useLayoutEffect } from 'react';
 import { getCategory, getFood, getOption } from '../../api';
-import Body from './Body';
+import Main from './Main';
 import Header from './Header';
 
 const MainPage = () => {
@@ -94,7 +94,7 @@ const MainPage = () => {
         categories={categories}
         activeCategoryId={activeCategoryId}
       />
-      <Body
+      <Main
         foods={displayCategoryFoods}
         getOptions={getOptions}
         prevCategory={decreaseActiveCategoryId}
