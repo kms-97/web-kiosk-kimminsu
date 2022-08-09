@@ -1,4 +1,5 @@
 import { FlexContainer, Img } from '../../../../component';
+import { click } from '../../../../util/pointerEvent';
 import styles from './FoodItem.module.scss';
 
 interface props {
@@ -7,11 +8,13 @@ interface props {
 }
 
 const FoodItem = ({ food, onClick }: props) => {
+  const changeSelectedFoodId = click(10, onClick, food.id);
+
   return (
     <FlexContainer
       flow="column"
       wrap="nowrap"
-      onClick={() => onClick(food.id)}
+      onPointerDown={changeSelectedFoodId}
       className={styles.item}
     >
       <Img src={food.imgURL} description={food.name} />
