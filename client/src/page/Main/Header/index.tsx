@@ -1,7 +1,7 @@
 import React from 'react';
-import { HeaderButton, NavContainer } from '../../../component';
+import { NavContainer } from '../../../component';
 import DragContainer from '../../../component/layout/DragContainer';
-import styles from './Header.module.scss';
+import CategoryTab from './CategoryTab';
 
 interface props {
   categories: CATEGORY[];
@@ -10,21 +10,16 @@ interface props {
 }
 
 const Header = ({ categories, onClick, activeCategoryId }: props) => {
-  const changeActiveCategory = (id: number): void => {
-    return onClick(id);
-  };
-
   return (
     <header>
       <DragContainer>
         <NavContainer flow="row" wrap="nowrap">
           {categories.map(({ id, name }) => (
-            <HeaderButton
-              key={id}
-              onClick={() => changeActiveCategory(id)}
-              value={name}
-              isSelected={id === activeCategoryId}
-              className={styles.button}
+            <CategoryTab
+              id={id}
+              name={name}
+              onClick={onClick}
+              activeCategoryId={activeCategoryId}
             />
           ))}
         </NavContainer>
