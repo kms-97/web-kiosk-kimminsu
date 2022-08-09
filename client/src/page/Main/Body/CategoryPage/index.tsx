@@ -14,11 +14,12 @@ const CategoryPage = ({ foods }: props) => {
   };
 
   return (
-    <FlexContainer flow="row" wrap="wrap" className={styles.page}>
-      {foods.map((food) => (
-        <FoodItem food={food} onClick={selectItem} key={food.id} />
-      ))}
-    </FlexContainer>
+    <>
+      <FlexContainer flow="row" wrap="wrap" className={styles.page} justify="start">
+        {foods.map((food) => (
+          <FoodItem food={food} onClick={selectItem} key={food.id} />
+        ))}
+      </FlexContainer>
   );
 };
 

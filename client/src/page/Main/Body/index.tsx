@@ -12,9 +12,9 @@ const Body = ({ foods, getOptions, nextCategory, prevCategory }: props) => {
   return (
     <main>
       <FlipContainer direction="x" rightFlipEvent={nextCategory} leftFilpEvent={prevCategory}>
-        <FlexContainer flow="row" wrap="nowrap" align="start">
+        <FlexContainer flow="row" wrap="nowrap" align="start" justify="start">
           {foods.map((foods, index) => (
-            <CategoryPage foods={foods} key={index} />
+            <CategoryPage foods={foods} key={index} getOptions={getOptions} />
           ))}
         </FlexContainer>
       </FlipContainer>
