@@ -3,8 +3,8 @@ import { TemperatureOption } from 'src/entity/temperature.entity';
 export class TemperatureDto {
   constructor(
     private readonly id: number,
-    private readonly hot: number | null,
-    private readonly cool: number | null,
+    private readonly h: number | null,
+    private readonly c: number | null,
   ) {}
 
   getId() {

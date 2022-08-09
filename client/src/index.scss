@@ -1,0 +1,37 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: aliceblue;
+}
+
+body {
+  position: relative;
+  width: 700px;
+  height: 1200px;
+  background-color: white;
+}
+
+header {
+  height: 70px;
+}
+
+main {
+  height: 980px;
+}
+
+footer {
+  position: relative;
+  height: 150px;
+  z-index: 1;
+  overflow: hidden;
+}
+
+#root {
+  height: 100%;
+}

@@ -1,0 +1,21 @@
+.button {
+  background: inherit;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;
+  overflow: visible;
+  cursor: pointer;
+  border: solid 2px #2ac1bc;
+  border-radius: 5px;
+
+  &.selected {
+    color: white;
+    background-color: #2ac1bc;
+    cursor: default;
+  }
+
+  &.disabled {
+    pointer-events: none;
+  }
+}
