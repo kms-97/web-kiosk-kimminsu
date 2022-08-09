@@ -4,7 +4,7 @@ import styles from './FlexContainer.module.scss';
 interface props extends React.ComponentProps<'div'>, FLEXPROPS {}
 
 const FlexContatiner = (
-  { flow, wrap, onClick, children, className, align }: props,
+  { flow, wrap, onPointerDown, children, className, align }: props,
   ref?: React.LegacyRef<HTMLDivElement>,
 ) => {
   const classString = `
@@ -16,7 +16,7 @@ const FlexContatiner = (
   `;
 
   return (
-    <div className={classString} onClick={onClick} ref={ref}>
+    <div className={classString} onPointerDown={onPointerDown} ref={ref}>
       {children}
     </div>
   );

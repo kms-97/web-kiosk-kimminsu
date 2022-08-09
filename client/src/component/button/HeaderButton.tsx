@@ -5,7 +5,7 @@ interface props extends React.ComponentProps<'button'> {
   isSelected: boolean;
 }
 
-const HeaderButton = ({ value, id, isSelected, onClick, className }: props) => {
+const HeaderButton = ({ value, id, isSelected, onPointerDown, className }: props) => {
   const classString = `
     ${styles.button} 
     ${isSelected ? styles.selected : ''}
@@ -13,7 +13,7 @@ const HeaderButton = ({ value, id, isSelected, onClick, className }: props) => {
   `;
 
   return (
-    <button className={classString} id={id} onClick={onClick}>
+    <button className={classString} id={id} onPointerDown={onPointerDown}>
       {value}
     </button>
   );
