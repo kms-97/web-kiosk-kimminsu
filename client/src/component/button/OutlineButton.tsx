@@ -1,11 +1,11 @@
-import styles from './OptionButton.module.scss';
+import styles from './OutlineButton.module.scss';
 
 interface props extends React.ComponentProps<'button'> {
   isActive: boolean;
   isSelected: boolean;
 }
 
-const OptionButton = ({ isActive, isSelected, onPointerDown, className, children }: props) => {
+const OutlineButton = ({ isActive, isSelected, onPointerDown, className, children }: props) => {
   const classString = `
     ${styles.button}
     ${isSelected ? styles.selected : ''}
@@ -20,4 +20,4 @@ const OptionButton = ({ isActive, isSelected, onPointerDown, className, children
   );
 };
 
-export default OptionButton;
+export default OutlineButton;

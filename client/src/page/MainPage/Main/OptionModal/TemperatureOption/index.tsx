@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FlexContainer, OptionButton } from '../../../../../component';
+import { FlexContainer, OutlineButton } from '../../../../../component';
 import { click } from '../../../../../util/pointerEvent';
 import styles from './TemperatureOption.module.scss';
 
@@ -28,7 +28,7 @@ const TemperatureOption = ({ temperature, changeEachPrice }: props) => {
     const onPointerDown = click(10, selectTemperature);
 
     return (
-      <OptionButton
+      <OutlineButton
         isActive={addPrice === null ? false : true}
         isSelected={name === selectedTemperature}
         onPointerDown={onPointerDown}
@@ -36,7 +36,7 @@ const TemperatureOption = ({ temperature, changeEachPrice }: props) => {
       >
         <div>{name}</div>
         <div>{addPrice}</div>
-      </OptionButton>
+      </OutlineButton>
     );
   };
 

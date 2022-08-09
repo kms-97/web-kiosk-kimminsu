@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FlexContainer, OptionButton } from '../../../../../component';
+import { FlexContainer, OutlineButton } from '../../../../../component';
 import { click } from '../../../../../util/pointerEvent';
 import styles from './SizeOption.module.scss';
 
@@ -28,7 +28,7 @@ const SizeOption = ({ size, changeEachPrice }: props) => {
     const onPointerDown = click(10, selectSize);
 
     return (
-      <OptionButton
+      <OutlineButton
         isActive={addPrice === null ? false : true}
         isSelected={name === selectedSize}
         onPointerDown={onPointerDown}
@@ -36,7 +36,7 @@ const SizeOption = ({ size, changeEachPrice }: props) => {
       >
         <div>{name}</div>
         <div>{addPrice}</div>
-      </OptionButton>
+      </OutlineButton>
     );
   };
 
