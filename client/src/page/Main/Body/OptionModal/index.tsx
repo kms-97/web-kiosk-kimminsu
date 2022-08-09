@@ -34,7 +34,7 @@ const OptionModal = ({ food, getOptions }: props) => {
   return (
     <div className={styles.modal}>
       <FlexContainer flow="column" wrap="nowrap" gap="10px">
-        <FlexContainer flow="row" wrap="nowrap" justify="spaceAround">
+        <FlexContainer flow="row" wrap="nowrap" justifyContent="spaceAround">
           <Img src={food.imgURL} description={food.name} className={styles.img} />
           <FlexContainer flow="column" wrap="nowrap" gap="10px" className={styles.name}>
             <div>{food.name}</div>

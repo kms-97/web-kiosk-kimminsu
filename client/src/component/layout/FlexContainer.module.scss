@@ -28,7 +28,7 @@
     flex-shrink: 0;
   }
 
-  &.align {
+  &.alignItems {
     &-center {
       align-items: center;
     }
@@ -37,7 +37,16 @@
     }
   }
 
-  &.justify {
+  &.alignContent {
+    &-center {
+      align-content: center;
+    }
+    &-start {
+      align-content: start;
+    }
+  }
+
+  &.justifyContent {
     &-center {
       justify-content: center;
     }

@@ -4,15 +4,26 @@ import styles from './FlexContainer.module.scss';
 interface props extends React.ComponentProps<'div'>, FLEXPROPS {}
 
 const FlexContatiner = (
-  { flow, wrap, onPointerDown, children, className, align, justify, gap }: props,
+  {
+    flow,
+    wrap,
+    onPointerDown,
+    children,
+    className,
+    alignItems,
+    alignContent,
+    justifyContent,
+    gap,
+  }: props,
   ref?: React.LegacyRef<HTMLDivElement>,
 ) => {
   const classString = `
     ${styles.container}
     ${styles[flow]}
     ${styles[wrap]}
-    ${align ? `${styles[`align-${align}`]}` : ''}
-    ${justify ? `${styles[`justify-${justify}`]}` : ''}
+    ${alignItems ? `${styles[`alignItem-${alignItems}`]}` : ''}
+    ${alignContent ? `${styles[`alignContent-${alignContent}`]}` : ''}
+    ${justifyContent ? `${styles[`justifyContent-${justifyContent}`]}` : ''}
     ${className ?? ''}
   `;
 

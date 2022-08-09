@@ -41,7 +41,7 @@ const TemperatureOption = ({ temperature, changeEachPrice }: props) => {
   };
 
   return (
-    <FlexContainer flow="row" wrap="nowrap" justify="spaceBetween">
+    <FlexContainer flow="row" wrap="nowrap" justifyContent="spaceBetween">
       {Object.entries(temperature).map(([name, addPrice]) => {
         if (name !== 'id') {
           return <Button key={name} name={name} addPrice={addPrice} />;
