@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useContext } from 'react';
 import { FlexContainer, ModalContainer } from '../../../../component';
+import SelectedFoodContext from '../../../../context/SelectedFood';
 import { click } from '../../../../util/pointerEvent';
 import FoodItem from '../FoodItem';
 import OptionModal from '../OptionModal';
@@ -8,17 +9,16 @@ import styles from './CategoryPage.module.scss';
 interface props {
   foods: FOOD[];
   getOptions: (arg: number) => { size: SIZE; temperature: TEMPERATURE };
-  addOrderItems: (item: ORDERITEM) => void;
 }
 
-const CategoryPage = ({ foods, getOptions, addOrderItems }: props) => {
-  const [selectedItem, setSelectedItem] = useState<FOOD>();
+const CategoryPage = ({ foods, getOptions }: props) => {
+  const selectedFood = useContext(SelectedFoodContext);
 
-  const selectItem = (foodId: number) => {
-    setSelectedItem(foods.flat().filter(({ id }) => id === foodId)[0]);
+  const selectFood = (foodId: number) => {
+    selectedFood?.action.setState(foods.flat().filter(({ id }) => id === foodId)[0]);
   };
 
-  const closeModal = click(10, setSelectedItem, undefined, true);
+  const closeModal = click(10, selectedFood?.action.setState!, null, true);
 
   return (
     <>
@@ -31,17 +31,12 @@ const CategoryPage = ({ foods, getOptions, addOrderItems }: props) => {
         alignItems="start"
       >
         {foods.map((food) => (
-          <FoodItem food={food} onClick={selectItem} key={food.id} />
+          <FoodItem food={food} onClick={selectFood} key={food.id} />
         ))}
       </FlexContainer>
-      {selectedItem ? (
+      {selectedFood?.state ? (
         <ModalContainer onPointerDown={closeModal}>
-          <OptionModal
-            food={selectedItem}
-            getOptions={getOptions}
-            closeModal={closeModal}
-            addOrderItems={addOrderItems}
-          />
+          <OptionModal food={selectedFood.state} getOptions={getOptions} closeModal={closeModal} />
         </ModalContainer>
       ) : (
         ''

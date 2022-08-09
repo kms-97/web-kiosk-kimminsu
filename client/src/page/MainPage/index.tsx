@@ -7,7 +7,6 @@ const MainPage = () => {
   const [categories, setCategories] = useState<CATEGORY[]>([]);
   const [foods, setFoods] = useState<FOOD[]>([]);
   const [options, setOptions] = useState<OPTION>({ size: {}, temperature: {} });
-  const [orderItems, setOrderItems] = useState<ORDERITEM[]>([]);
   const [displayCategoryFoods, setdisplayCategoryFoods] = useState<FOOD[][]>([[]]);
   const [activeCategoryId, setActiveCategoryId] = useState<number>(0);
   const maxCategoryId = useRef<number>(0);
@@ -87,25 +86,6 @@ const MainPage = () => {
     setActiveCategoryId((id) => getNextCategoryId(id));
   };
 
-  const addOrderItems = (item: ORDERITEM) => {
-    setOrderItems((prev) => {
-      const newItems = [...prev];
-      let idx;
-
-      for (let i = 0; i < newItems.length; i++) {
-        if (newItems[i].isEqual(item)) {
-          idx = i;
-          break;
-        }
-      }
-
-      if (idx !== undefined) newItems[idx].unit += item.unit;
-      else newItems.push(item);
-
-      return newItems;
-    });
-  };
-
   return (
     <>
       <Header
@@ -116,7 +96,6 @@ const MainPage = () => {
       <Main
         foods={displayCategoryFoods}
         getOptions={getOptions}
-        addOrderItems={addOrderItems}
         prevCategory={decreaseActiveCategoryId}
         nextCategory={increaseActiveCategoryId}
       />

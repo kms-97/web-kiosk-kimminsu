@@ -1,23 +1,33 @@
-import { useState, useLayoutEffect, PointerEventHandler, useRef, useEffect } from 'react';
+import {
+  useState,
+  useLayoutEffect,
+  PointerEventHandler,
+  useRef,
+  useEffect,
+  useContext,
+} from 'react';
 import { FlexContainer, Img, TransperentButton } from '../../../../component';
 import SizeOption from './SizeOption';
 import TemperatureOption from './TemperatureOption';
 import styles from './OptionModal.module.scss';
 import UnitOption from './UnitOption';
 import { click } from '../../../../util/pointerEvent';
+import OrderContext from '../../../../context/Order';
+import SelectedFoodContext from '../../../../context/SelectedFood';
 
 interface props {
   food: FOOD;
   getOptions: (arg: number) => { size: SIZE; temperature: TEMPERATURE };
   closeModal: PointerEventHandler;
-  addOrderItems: (item: ORDERITEM) => void;
 }
 
-const OptionModal = ({ food, getOptions, closeModal, addOrderItems }: props) => {
+const OptionModal = ({ food, getOptions, closeModal }: props) => {
   const [eachPrice, setEachPrice] = useState<number>(0);
   const [selectedSize, setSelectedSize] = useState<string>('s');
   const [selectedTemperature, setSelectedTemperature] = useState<string>('h');
   const [unit, setUnit] = useState<number>(1);
+  const order = useContext(OrderContext);
+  const selectedFood = useContext(SelectedFoodContext);
   const options = useRef(getOptions(food.id));
 
   useLayoutEffect(() => {
@@ -41,7 +51,12 @@ const OptionModal = ({ food, getOptions, closeModal, addOrderItems }: props) => 
     setUnit((prev) => prev - 1);
   };
 
-  const addToCart = click(10, addOrderItems, {
+  const addToOrder = (arg: ORDERFOOD) => {
+    order?.action.addState(arg);
+    selectedFood?.action.setState(null);
+  };
+
+  const onClickSubmitBtn = click(10, addToOrder, {
     id: food.id,
     name: food.name,
     unit,
@@ -81,7 +96,7 @@ const OptionModal = ({ food, getOptions, closeModal, addOrderItems }: props) => 
         </TransperentButton>
         <TransperentButton
           className={`${styles.button} ${styles.primary}`}
-          onPointerDown={addToCart}
+          onPointerDown={onClickSubmitBtn}
         >
           완료
         </TransperentButton>
