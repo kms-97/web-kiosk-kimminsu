@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  height: 100%;
+
+  &.row {
+    flex-direction: row;
+  }
+
+  &.column {
+    flex-direction: column;
+  }
+
+  &.wrap {
+    flex-wrap: wrap;
+  }
+
+  &.nowrap {
+    flex-wrap: nowrap;
+  }
+
+  &.overflowX {
+    overflow-x: auto;
+  }
+
+  * {
+    flex-shrink: 0;
+  }
+
+  &.align {
+    &-center {
+      align-items: center;
+    }
+    &-start {
+      align-items: start;
+    }
+  }
+}

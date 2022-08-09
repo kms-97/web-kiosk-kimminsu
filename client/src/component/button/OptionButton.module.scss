@@ -1,0 +1,16 @@
+.button {
+  background: inherit;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;
+  overflow: visible;
+  cursor: pointer;
+  border: solid 2px #2ac1bc;
+
+  &.selected {
+    color: white;
+    background-color: #2ac1bc;
+    cursor: default;
+  }
+}
