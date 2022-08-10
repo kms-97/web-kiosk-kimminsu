@@ -9,8 +9,8 @@ interface props {
 }
 
 const UnitOption = ({ unit, increaseUnit, decreaseUnit }: props) => {
-  const onClickIncreaseButton = click(10, increaseUnit);
-  const onClickDecreaseButton = click(10, decreaseUnit);
+  const onClickIncreaseButton = click({ callback: increaseUnit });
+  const onClickDecreaseButton = click({ callback: decreaseUnit });
   return (
     <FlexContainer flow="row" wrap="nowrap" gap="10px">
       <CircleButton

@@ -55,14 +55,17 @@ const OptionModal = ({ food, closeModal }: props) => {
     selectedFood?.action.setState(null);
   };
 
-  const onClickSubmitBtn = click(10, addToOrder, {
-    id: food.id,
-    name: food.name,
-    unit,
-    size: selectedSize,
-    temperature: selectedTemperature,
-    eachPrice,
-    imgURL: food.imgURL,
+  const onClickSubmitBtn = click({
+    callback: addToOrder,
+    arg: {
+      id: food.id,
+      name: food.name,
+      unit,
+      size: selectedSize,
+      temperature: selectedTemperature,
+      eachPrice,
+      imgURL: food.imgURL,
+    },
   });
 
   return (

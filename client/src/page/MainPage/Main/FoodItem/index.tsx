@@ -8,7 +8,7 @@ interface props {
 }
 
 const FoodItem = ({ food, onClick }: props) => {
-  const changeSelectedFoodId = click(10, onClick, food.id);
+  const changeSelectedFoodId = click({ callback: onClick, arg: food.id });
 
   return (
     <FlexContainer

@@ -16,7 +16,7 @@ const CategoryPage = ({ foods }: props) => {
     selectedFood?.action.setState(foods.flat().filter(({ id }) => id === foodId)[0]);
   };
 
-  const closeModal = click(10, selectedFood?.action.setState!, null, true);
+  const closeModal = click({ callback: selectedFood?.action.setState!, arg: null, exact: true });
 
   return (
     <>

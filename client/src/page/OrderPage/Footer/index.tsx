@@ -9,8 +9,8 @@ const Footer = () => {
   const page = useContext(PageContext);
   const [isPayProcess, setIsPayProcess] = useState<boolean>(false);
 
-  const openPaymentModal = click(10, setIsPayProcess, true);
-  const closePaymentModal = click(10, setIsPayProcess, false, true);
+  const openPaymentModal = click({ callback: setIsPayProcess, arg: true });
+  const closePaymentModal = click({ callback: setIsPayProcess, arg: false, exact: true });
 
   return (
     <>

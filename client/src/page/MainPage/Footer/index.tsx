@@ -9,9 +9,9 @@ import OrderList from './OrderList';
 const Footer = () => {
   const orders = useContext(OrderContext);
   const page = useContext(PageContext);
-  const discardAllOrders = click(10, orders?.action.setState!, []);
+  const discardAllOrders = click({ callback: orders?.action.setState!, arg: [] });
   const totalUnit = orders?.action.getTotalUnit()!;
-  const toOrderPage = click(10, page?.action.addPage!, OrderPage);
+  const toOrderPage = click({ callback: page?.action.addPage!, arg: OrderPage });
 
   return (
     <footer>

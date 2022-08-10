@@ -1,11 +1,18 @@
 import React from 'react';
 
-const click = (
-  threshold: number,
-  callback: Function,
-  arg?: any,
-  exact?: boolean,
-): React.PointerEventHandler => {
+interface props {
+  threshold?: number;
+  callback: Function;
+  arg?: any;
+  exact?: boolean;
+}
+
+const click = ({
+  callback,
+  threshold = 10,
+  arg,
+  exact = false,
+}: props): React.PointerEventHandler => {
   return (e) => {
     if (exact && e.target !== e.currentTarget) return;
     const $target = e.currentTarget as HTMLElement;

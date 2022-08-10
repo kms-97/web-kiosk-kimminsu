@@ -11,7 +11,7 @@ interface props {
 
 const TemperatureOption = ({ option, temperature, selectTemperature }: props) => {
   const Button = ({ name, addPrice }: { name: string; addPrice: number | null }) => {
-    const onPointerDown = click(10, selectTemperature, name);
+    const onPointerDown = click({ callback: selectTemperature, arg: name });
 
     return (
       <OutlineButton

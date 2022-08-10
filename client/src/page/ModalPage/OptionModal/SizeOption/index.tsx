@@ -11,7 +11,7 @@ interface props {
 
 const SizeOption = ({ option, size, selectSize }: props) => {
   const Button = ({ name, addPrice }: { name: string; addPrice: number | null }) => {
-    const onPointerDown = click(10, selectSize, name);
+    const onPointerDown = click({ callback: selectSize, arg: name });
 
     return (
       <OutlineButton

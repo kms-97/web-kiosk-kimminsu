@@ -16,18 +16,24 @@ interface props {
 
 const OrderItem = ({ order }: props) => {
   const orders = useContext(OrderContext);
-  const discardOrder = click(10, orders?.action.deleteState!, order);
-  const increaseUnit = click(10, orders?.action.addState!, {
-    id: order.id,
-    size: order.size,
-    temperature: order.temperature,
-    unit: 1,
+  const discardOrder = click({ callback: orders?.action.deleteState!, arg: order });
+  const increaseUnit = click({
+    callback: orders?.action.addState!,
+    arg: {
+      id: order.id,
+      size: order.size,
+      temperature: order.temperature,
+      unit: 1,
+    },
   });
-  const decreaseUnit = click(10, orders?.action.addState!, {
-    id: order.id,
-    size: order.size,
-    temperature: order.temperature,
-    unit: -1,
+  const decreaseUnit = click({
+    callback: orders?.action.addState!,
+    arg: {
+      id: order.id,
+      size: order.size,
+      temperature: order.temperature,
+      unit: -1,
+    },
   });
   const sizeString = { s: 'small', m: 'medium', l: 'large' };
   const temperatureString = { h: 'hot', c: 'ice' };

@@ -11,7 +11,7 @@ interface props {
 
 const CategoryTab = ({ id, name }: props) => {
   const activeCategoryId = useContext(ActiveCategoryIdContext);
-  const changeActiveCategory = click(10, activeCategoryId?.action.setState!, id);
+  const changeActiveCategory = click({ callback: activeCategoryId?.action.setState!, arg: id });
 
   return (
     <TransperentButton
