@@ -1,11 +1,11 @@
-import React, { useCallback, useEffect, useState, useLayoutEffect, useContext } from 'react';
+import { useEffect, useState, useLayoutEffect, useContext } from 'react';
 import { CategoriesContext, OptionContext, RenderCategoryIdContext } from '../../context';
 import { getCategory, getFood, getOption } from '../../api';
 import Main from './Main';
 import Header from './Header';
 import Footer from './Footer';
 
-const MainPage = ({ setPage }: { setPage: React.Dispatch<React.SetStateAction<string>> }) => {
+const MainPage = () => {
   const renderCategoryId = useContext(RenderCategoryIdContext);
   const categories = useContext(CategoriesContext);
   const options = useContext(OptionContext);
@@ -25,7 +25,7 @@ const MainPage = ({ setPage }: { setPage: React.Dispatch<React.SetStateAction<st
     setdisplayCategoryFoods(newFoods);
   }, [renderCategoryId, foods]);
 
-  const initDatas = useCallback(async () => {
+  const initDatas = async () => {
     const foodData = getFood();
     const categoryData = getCategory();
     const optionData = getOption();
@@ -35,13 +35,13 @@ const MainPage = ({ setPage }: { setPage: React.Dispatch<React.SetStateAction<st
       categories?.action.setState(category.data);
       options?.action.setState(option.data);
     });
-  }, []);
+  };
 
   return (
     <div className="page">
       <Header categories={categories!.state} />
       <Main foods={displayCategoryFoods} />
-      <Footer setPage={setPage} />
+      <Footer />
     </div>
   );
 };

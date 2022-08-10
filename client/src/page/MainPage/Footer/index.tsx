@@ -1,16 +1,17 @@
 import { useContext } from 'react';
 import { FlexContainer, TransperentButton } from '../../../component';
-import { OrderContext } from '../../../context';
+import { OrderContext, PageContext } from '../../../context';
 import { click } from '../../../util/pointerEvent';
+import OrderPage from '../../OrderPage';
 import styles from './Footer.module.scss';
 import OrderList from './OrderList';
 
-const Footer = ({ setPage }: { setPage: React.Dispatch<React.SetStateAction<string>> }) => {
+const Footer = () => {
   const orders = useContext(OrderContext);
+  const page = useContext(PageContext);
   const discardAllOrders = click(10, orders?.action.setState!, []);
   const totalUnit = orders?.action.getTotalUnit()!;
-
-  const toOrderPage = click(10, setPage, 'order');
+  const toOrderPage = click(10, page?.action.addPage!, OrderPage);
 
   return (
     <footer>

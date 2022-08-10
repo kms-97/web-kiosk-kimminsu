@@ -1,19 +1,24 @@
-import { useState } from 'react';
-import { GeneralProvider } from './context';
+import { useContext } from 'react';
+import { GeneralProvider, PageContext } from './context';
 import MainPage from './page/MainPage';
-import OrderPage from './page/OrderPage';
-
-declare type PAGE = 'main' | 'order';
 
 function App() {
-  const [page, setPage] = useState<string>('main');
-
   return (
     <GeneralProvider>
-      {page === 'main' ? <MainPage setPage={setPage} /> : ''}
-      {page === 'order' ? <OrderPage /> : ''}
+      <PageContainer />
     </GeneralProvider>
   );
 }
+
+const PageContainer = () => {
+  const pages = useContext(PageContext);
+  const ActivePage = pages?.state ? [...pages?.state].pop() ?? MainPage : MainPage;
+
+  return (
+    <>
+      <ActivePage />
+    </>
+  );
+};
 
 export default App;
