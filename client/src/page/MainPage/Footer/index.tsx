@@ -7,17 +7,24 @@ import OrderList from './OrderList';
 
 const Footer = () => {
   const orders = useContext(OrderContext);
-
   const discardAllOrders = click(10, orders?.action.setState!, []);
+  const totalUnit = orders?.action.getTotalUnit()!;
 
   return (
     <footer>
       <OrderList />
       <FlexContainer flow="row" wrap="nowrap" className={styles.middle}>
-        <TransperentButton className={styles.button} onPointerDown={discardAllOrders}>
+        <TransperentButton
+          className={styles.button}
+          onPointerDown={discardAllOrders}
+          isActive={totalUnit > 0}
+        >
           전체 취소
         </TransperentButton>
-        <TransperentButton className={`${styles.button} ${styles.orderBtn}`}>
+        <TransperentButton
+          className={`${styles.button} ${styles.orderBtn}`}
+          isActive={totalUnit > 0}
+        >
           주문하기
         </TransperentButton>
       </FlexContainer>
