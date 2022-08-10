@@ -62,8 +62,8 @@ declare interface ACTION<T> {
 }
 
 declare interface FLEXPROPS {
-  flow: 'row' | 'column';
-  wrap: 'nowrap' | 'wrap';
+  flow?: 'row' | 'column';
+  wrap?: 'nowrap' | 'wrap';
   overflow?: 'overflowX' | 'overflowY';
   gap?: string;
   alignItems?: 'start' | 'center' | 'spaceBetween' | 'spaceAround' | 'end';

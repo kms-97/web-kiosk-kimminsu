@@ -5,8 +5,8 @@ interface props extends React.ComponentProps<'div'>, FLEXPROPS {}
 
 const FlexContatiner = (
   {
-    flow,
-    wrap,
+    flow = 'row',
+    wrap = 'nowrap',
     onPointerDown,
     children,
     className,
