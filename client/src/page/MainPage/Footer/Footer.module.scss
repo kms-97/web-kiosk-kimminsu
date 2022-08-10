@@ -1,6 +1,6 @@
 .bottom {
   background-color: #111;
-  height: 40%;
+  height: 60px;
   padding: 0 30px;
 
   .button {
@@ -13,22 +13,16 @@
 
 .middle {
   background-color: #222;
-  height: 60%;
+  height: 72px;
 
   .button {
     width: 50%;
     height: 100%;
     font-size: 30px;
     color: white;
-  }
-}
 
-.top {
-  float: left;
-  position: relative;
-  background-color: #333;
-  height: 200px;
-  width: 100%;
-  z-index: -1;
-  display: none;
+    &.orderBtn {
+      background-color: #2ac1bc;
+    }
+  }
 }

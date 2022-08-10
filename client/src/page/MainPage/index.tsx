@@ -3,6 +3,7 @@ import { CategoriesContext, OptionContext, RenderCategoryIdContext } from '../..
 import { getCategory, getFood, getOption } from '../../api';
 import Main from './Main';
 import Header from './Header';
+import Footer from './Footer';
 
 const MainPage = () => {
   const renderCategoryId = useContext(RenderCategoryIdContext);
@@ -40,6 +41,7 @@ const MainPage = () => {
     <>
       <Header categories={categories!.state} />
       <Main foods={displayCategoryFoods} />
+      <Footer />
     </>
   );
 };

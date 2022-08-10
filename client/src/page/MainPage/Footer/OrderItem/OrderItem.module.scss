@@ -1,0 +1,18 @@
+.card {
+  position: relative;
+  background-color: white;
+  min-width: 160px;
+  height: 90%;
+  padding: 10px 30px 10px 10px;
+
+  .name {
+    font-size: 16px;
+  }
+
+  .delete {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    cursor: pointer;
+  }
+}

@@ -1,13 +1,25 @@
+import { useContext } from 'react';
 import { FlexContainer, TransperentButton } from '../../../component';
+import { OrderContext } from '../../../context';
+import { click } from '../../../util/pointerEvent';
 import styles from './Footer.module.scss';
+import OrderList from './OrderList';
 
 const Footer = () => {
+  const orders = useContext(OrderContext);
+
+  const discardAllOrders = click(10, orders?.action.setState!, []);
+
   return (
     <footer>
-      <div className={styles.top}></div>
+      <OrderList />
       <FlexContainer flow="row" wrap="nowrap" className={styles.middle}>
-        <TransperentButton className={styles.button}>전체 취소</TransperentButton>
-        <TransperentButton className={styles.button}>주문하기</TransperentButton>
+        <TransperentButton className={styles.button} onPointerDown={discardAllOrders}>
+          전체 취소
+        </TransperentButton>
+        <TransperentButton className={`${styles.button} ${styles.orderBtn}`}>
+          주문하기
+        </TransperentButton>
       </FlexContainer>
       <FlexContainer
         flow="row"
