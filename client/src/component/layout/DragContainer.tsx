@@ -49,7 +49,7 @@ const DragContainer = ({ children, direction = 'x', className }: props) => {
       if (direction === 'y') {
         const movementY = e.movementY;
         const { y: currentY } = getTranslateValues($target as HTMLElement);
-        const limit = currentY - $container.scrollHeight + $container.clientHeight;
+        const limit = $container.clientHeight - $container.scrollHeight;
 
         const translatePosition = Math.max(Math.min(currentY + movementY, 0), limit);
         ($target.style as CSSStyleDeclaration).transform = `translateY(${translatePosition}px)`;
