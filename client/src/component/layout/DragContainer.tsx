@@ -2,14 +2,18 @@ import React, { useRef, useEffect } from 'react';
 import { getTranslateValues } from '../../util/transform';
 import styles from './DragContainer.module.scss';
 
-interface props {
+interface props extends React.ComponentProps<'div'> {
   children: React.ReactElement;
   direction?: 'x' | 'y';
 }
 
-const DragContainer = ({ children, direction = 'x' }: props) => {
+const DragContainer = ({ children, direction = 'x', className }: props) => {
   const targetRef = useRef<HTMLElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const classString = `
+    ${styles.drag}
+    ${className ?? ''}
+  `;
 
   useEffect(() => {
     targetRef.current?.addEventListener('pointerdown', mouseDownHandler);
@@ -63,7 +67,7 @@ const DragContainer = ({ children, direction = 'x' }: props) => {
   };
 
   return (
-    <div className={styles.drag} ref={containerRef}>
+    <div className={classString} ref={containerRef}>
       {React.cloneElement(children, {
         ref: targetRef,
       })}
