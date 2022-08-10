@@ -3,6 +3,7 @@ import { CategoriesContext, ActiveCategoryIdContext, RenderCategoryIdContext } f
 import { OrderContext } from './Order';
 import { SelectedFoodContext } from './SelectedFood';
 import { OptionContext } from './Option';
+import { PageContext } from './Page';
 
 export {
   GeneralProvider,
@@ -12,4 +13,5 @@ export {
   OrderContext,
   SelectedFoodContext,
   OptionContext,
+  PageContext,
 };
