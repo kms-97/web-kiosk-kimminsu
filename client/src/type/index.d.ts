@@ -19,6 +19,7 @@ declare class ORDERFOOD {
   size: 's' | 'm' | 'l';
   temperature: 'h' | 'c';
   eachPrice: number;
+  imgURL: string;
 }
 
 declare interface OPTION {
