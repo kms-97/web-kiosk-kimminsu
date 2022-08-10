@@ -4,6 +4,7 @@ import { OrderContext } from './Order';
 import { SelectedFoodContext } from './SelectedFood';
 import { OptionContext } from './Option';
 import { PageContext } from './Page';
+import { CreditContext, PaymentContext } from './Payment';
 
 export {
   GeneralProvider,
@@ -14,4 +15,6 @@ export {
   SelectedFoodContext,
   OptionContext,
   PageContext,
+  PaymentContext,
+  CreditContext,
 };

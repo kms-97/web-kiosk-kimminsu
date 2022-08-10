@@ -2,6 +2,7 @@ import { CategoryProvider } from './Category';
 import { OptionProvider } from './Option';
 import { OrderProvider } from './Order';
 import { PageProvider } from './Page';
+import { PaymentProvider } from './Payment';
 import { SelectedFoodProvider } from './SelectedFood';
 
 const GeneralProvider = ({ children }: { children: React.ReactNode }) => {
@@ -10,7 +11,9 @@ const GeneralProvider = ({ children }: { children: React.ReactNode }) => {
       <CategoryProvider>
         <OrderProvider>
           <OptionProvider>
-            <SelectedFoodProvider>{children}</SelectedFoodProvider>
+            <PaymentProvider>
+              <SelectedFoodProvider>{children}</SelectedFoodProvider>
+            </PaymentProvider>
           </OptionProvider>
         </OrderProvider>
       </CategoryProvider>
