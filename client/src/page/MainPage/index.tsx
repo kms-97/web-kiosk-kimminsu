@@ -1,11 +1,11 @@
-import { useCallback, useEffect, useState, useLayoutEffect, useContext } from 'react';
+import React, { useCallback, useEffect, useState, useLayoutEffect, useContext } from 'react';
 import { CategoriesContext, OptionContext, RenderCategoryIdContext } from '../../context';
 import { getCategory, getFood, getOption } from '../../api';
 import Main from './Main';
 import Header from './Header';
 import Footer from './Footer';
 
-const MainPage = () => {
+const MainPage = ({ setPage }: { setPage: React.Dispatch<React.SetStateAction<string>> }) => {
   const renderCategoryId = useContext(RenderCategoryIdContext);
   const categories = useContext(CategoriesContext);
   const options = useContext(OptionContext);
@@ -38,11 +38,11 @@ const MainPage = () => {
   }, []);
 
   return (
-    <>
+    <div className="page">
       <Header categories={categories!.state} />
       <Main foods={displayCategoryFoods} />
-      <Footer />
-    </>
+      <Footer setPage={setPage} />
+    </div>
   );
 };
 

@@ -15,6 +15,19 @@ body {
   width: 700px;
   height: 1200px;
   background-color: white;
+  overflow: hidden;
+}
+
+#root {
+  display: flex;
+  width: inherit;
+  height: inherit;
+
+  .page {
+    position: absolute;
+    width: inherit;
+    height: inherit;
+  }
 }
 
 header {
@@ -29,8 +42,4 @@ footer {
   position: relative;
   height: 292px;
   z-index: 1;
-}
-
-#root {
-  height: 100%;
 }

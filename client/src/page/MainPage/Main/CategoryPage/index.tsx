@@ -3,8 +3,7 @@ import { DragContainer, FlexContainer, ModalContainer } from '../../../../compon
 import { SelectedFoodContext } from '../../../../context';
 import { click } from '../../../../util/pointerEvent';
 import FoodItem from '../FoodItem';
-import OptionModal from '../OptionModal';
-import styles from './CategoryPage.module.scss';
+import OptionModal from '../../../ModalPage/OptionModal';
 
 interface props {
   foods: FOOD[];
@@ -25,7 +24,6 @@ const CategoryPage = ({ foods }: props) => {
         <FlexContainer
           flow="row"
           wrap="wrap"
-          className={styles.page}
           justifyContent="start"
           alignContent="start"
           alignItems="start"

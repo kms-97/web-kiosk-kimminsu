@@ -5,10 +5,12 @@ import { click } from '../../../util/pointerEvent';
 import styles from './Footer.module.scss';
 import OrderList from './OrderList';
 
-const Footer = () => {
+const Footer = ({ setPage }: { setPage: React.Dispatch<React.SetStateAction<string>> }) => {
   const orders = useContext(OrderContext);
   const discardAllOrders = click(10, orders?.action.setState!, []);
   const totalUnit = orders?.action.getTotalUnit()!;
+
+  const toOrderPage = click(10, setPage, 'order');
 
   return (
     <footer>
@@ -24,6 +26,7 @@ const Footer = () => {
         <TransperentButton
           className={`${styles.button} ${styles.orderBtn}`}
           isActive={totalUnit > 0}
+          onPointerDown={toOrderPage}
         >
           주문하기
         </TransperentButton>
