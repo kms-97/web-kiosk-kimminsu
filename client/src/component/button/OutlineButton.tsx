@@ -9,7 +9,6 @@ const OutlineButton = ({ isActive, isSelected, onPointerDown, className, childre
   const classString = `
     ${styles.button}
     ${isSelected ? styles.selected : ''}
-    ${isActive ? '' : styles.disabled}
     ${className ?? ''}
   `;
 

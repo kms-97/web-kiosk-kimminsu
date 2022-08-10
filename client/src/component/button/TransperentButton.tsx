@@ -3,9 +3,16 @@ import styles from './TransperentButton.module.scss';
 
 interface props extends React.ComponentProps<'button'> {
   isSelected?: boolean;
+  isActive?: boolean;
 }
 
-const TransperentButton = ({ children, isSelected, onPointerDown, className }: props) => {
+const TransperentButton = ({
+  children,
+  isActive = true,
+  isSelected,
+  onPointerDown,
+  className,
+}: props) => {
   const classString = `
     ${styles.button} 
     ${isSelected ? styles.selected : ''}
@@ -13,7 +20,7 @@ const TransperentButton = ({ children, isSelected, onPointerDown, className }: p
   `;
 
   return (
-    <button className={classString} onPointerDown={onPointerDown}>
+    <button className={classString} disabled={!isActive} onPointerDown={onPointerDown}>
       {children}
     </button>
   );

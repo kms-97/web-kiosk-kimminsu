@@ -15,7 +15,7 @@
     cursor: default;
   }
 
-  &.disabled {
+  &:disabled {
     pointer-events: none;
   }
 }

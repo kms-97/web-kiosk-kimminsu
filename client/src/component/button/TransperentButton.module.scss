@@ -10,4 +10,8 @@
   &.selected {
     border-bottom: solid 2px #2ac1bc;
   }
+
+  &:disabled {
+    pointer-events: none;
+  }
 }
