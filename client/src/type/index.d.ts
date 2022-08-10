@@ -16,7 +16,8 @@ declare class ORDERFOOD {
   id: number;
   name: string;
   unit: number;
-  options: OPTION;
+  size: 's' | 'm' | 'l';
+  temperature: 'h' | 'c';
   eachPrice: number;
 }
 
