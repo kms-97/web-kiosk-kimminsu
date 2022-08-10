@@ -1,6 +1,7 @@
 import { useContext, useRef, useEffect, useLayoutEffect, useState } from 'react';
 import { postOrder } from '../../api';
 import { FlexContainer } from '../../component';
+import { PAYMENT_STRING, SIZE_STRING, TEMP_STRING } from '../../constant';
 import { CreditContext, OrderContext, PageContext, PaymentContext } from '../../context';
 import MainPage from '../MainPage';
 import styles from './ResultPage.module.scss';
@@ -66,13 +67,14 @@ const ResultPage = () => {
           <FlexContainer flow="column" alignItems="start" gap="10px">
             {orders?.state.map((order) => (
               <div>
-                {order.name}, {order.temperature}, {order.size}, {order.unit}개
+                {order.name}, {TEMP_STRING[order.temperature]}, {SIZE_STRING[order.size]},{' '}
+                {order.unit}개
               </div>
             ))}
           </FlexContainer>
           <FlexContainer flow="column" alignItems="start" gap="10px">
-            <div>결제 방식: {payment?.state}</div>
-            <div>결제 금액: {totalPrice}원</div>
+            <div>결제 방식: {PAYMENT_STRING[payment?.state!]}</div>
+            <div>결제 금액: {totalPrice.toLocaleString()}원</div>
             {payment?.state === 'cash' ? (
               <>
                 <div>투입 금액: {credit?.state!.toLocaleString()}원</div>

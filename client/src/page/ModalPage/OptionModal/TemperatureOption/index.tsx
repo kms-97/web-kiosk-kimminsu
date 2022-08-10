@@ -1,10 +1,11 @@
 import React from 'react';
 import { FlexContainer, OutlineButton } from '../../../../component';
+import { TEMP_STRING } from '../../../../constant';
 import { click } from '../../../../util/pointerEvent';
 import styles from './TemperatureOption.module.scss';
 
 interface props {
-  option: TEMPERATURE;
+  option: TEMPERATURE_PRICE;
   temperature: string;
   selectTemperature: (temp: string) => void;
 }
@@ -20,7 +21,7 @@ const TemperatureOption = ({ option, temperature, selectTemperature }: props) =>
         onPointerDown={onPointerDown}
         className={styles.button}
       >
-        <div>{name}</div>
+        <div>{TEMP_STRING[name]}</div>
         <div>+{addPrice}</div>
       </OutlineButton>
     );

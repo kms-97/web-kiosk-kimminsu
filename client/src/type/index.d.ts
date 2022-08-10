@@ -16,25 +16,29 @@ declare class ORDERFOOD {
   id: number;
   name: string;
   unit: number;
-  size: 's' | 'm' | 'l';
-  temperature: 'h' | 'c';
+  size: SIZE;
+  temperature: TEMPERATURE;
   eachPrice: number;
   imgURL: string;
 }
 
 declare interface OPTION {
-  size: { [key in string]: SIZE };
-  temperature: { [key in string]: TEMPERATURE };
+  size: { [key in string]: SIZE_PRICE };
+  temperature: { [key in string]: TEMPERATURE_PRICE };
 }
 
-declare class SIZE {
+declare const SIZE = 's' | 'm' | 'l';
+
+declare const TEMPERATURE = 'h' | 'c';
+
+declare class SIZE_PRICE {
   [key: string]: number | null;
   small: number | null;
   medium: number | null;
   large: number | null;
 }
 
-declare class TEMPERATURE {
+declare class TEMPERATURE_PRICE {
   [key: string]: number | null;
   hot: number | null;
   cool: number | null;

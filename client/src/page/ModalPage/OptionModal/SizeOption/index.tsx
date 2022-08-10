@@ -1,10 +1,11 @@
 import React from 'react';
 import { FlexContainer, OutlineButton } from '../../../../component';
+import { SIZE_STRING } from '../../../../constant';
 import { click } from '../../../../util/pointerEvent';
 import styles from './SizeOption.module.scss';
 
 interface props {
-  option: SIZE;
+  option: SIZE_PRICE;
   size: string;
   selectSize: (size: string) => void;
 }
@@ -20,7 +21,7 @@ const SizeOption = ({ option, size, selectSize }: props) => {
         onPointerDown={onPointerDown}
         className={styles.button}
       >
-        <div>{name}</div>
+        <div>{SIZE_STRING[name]}</div>
         <div>+{addPrice}</div>
       </OutlineButton>
     );

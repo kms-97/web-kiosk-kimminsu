@@ -1,4 +1,5 @@
 import { FlexContainer, Img } from '../../../component';
+import { SIZE_STRING, TEMP_STRING } from '../../../constant';
 import styles from './OrderItem.module.scss';
 
 interface props {
@@ -13,8 +14,8 @@ const OrderItem = ({ order }: props) => {
         <FlexContainer flow="column" className={styles.desc} alignItems="start" gap="20px">
           <div className={styles.name}>{order.name}</div>
           <FlexContainer justifyContent="start" gap="10px">
-            <div className={styles.option}>{order.size}</div>
-            <div className={styles.option}>{order.temperature}</div>
+            <div className={styles.option}>{SIZE_STRING[order.size]}</div>
+            <div className={styles.option}>{TEMP_STRING[order.temperature]}</div>
           </FlexContainer>
         </FlexContainer>
       </FlexContainer>

@@ -4,7 +4,7 @@ type Context<T> = {
   state: T | null;
   action: {
     setState: Dispatch<SetStateAction<T | null>>;
-    getById: (arg: number) => { size: SIZE; temperature: TEMPERATURE };
+    getById: (arg: number) => { size: SIZE_PRICE; temperature: TEMPERATURE_PRICE };
   };
 };
 

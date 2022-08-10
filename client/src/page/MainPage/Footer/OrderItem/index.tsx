@@ -6,6 +6,7 @@ import {
   PlusIcon,
   TransperentButton,
 } from '../../../../component';
+import { SIZE_STRING, TEMP_STRING } from '../../../../constant';
 import { OrderContext } from '../../../../context';
 import { click } from '../../../../util/pointerEvent';
 import styles from './OrderItem.module.scss';
@@ -35,8 +36,6 @@ const OrderItem = ({ order }: props) => {
       unit: -1,
     },
   });
-  const sizeString = { s: 'small', m: 'medium', l: 'large' };
-  const temperatureString = { h: 'hot', c: 'ice' };
 
   return (
     <FlexContainer flow="column" wrap="nowrap" className={styles.card} gap="10px">
@@ -45,8 +44,8 @@ const OrderItem = ({ order }: props) => {
       </TransperentButton>
       <div className={styles.name}>{order.name}</div>
       <FlexContainer flow="row" wrap="nowrap" justifyContent="spaceAround" gap="10px">
-        <div className={styles.option}>{sizeString[order.size]}</div>
-        <div className={styles.option}>{temperatureString[order.temperature]}</div>
+        <div className={styles.option}>{SIZE_STRING[order.size]}</div>
+        <div className={styles.option}>{TEMP_STRING[order.temperature]}</div>
       </FlexContainer>
       <FlexContainer flow="row" wrap="nowrap" gap="10px">
         <TransperentButton onPointerDown={decreaseUnit} isActive={order.unit > 1}>
