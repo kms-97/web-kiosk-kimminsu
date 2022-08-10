@@ -5,6 +5,9 @@ type Context<T> = {
   action: {
     setState: Dispatch<SetStateAction<Array<T>>>;
     addState: (arg: T) => void;
+    deleteState: (arg: T) => void;
+    getTotalPrice: () => number;
+    getTotalUnit: () => number;
   };
 };
 
@@ -14,7 +17,7 @@ const OrderProvider = ({ children }: { children: React.ReactNode }) => {
   const [order, setOrder] = useState<ORDERFOOD[]>([]);
 
   const isEqual = (arg1: ORDERFOOD, arg2: ORDERFOOD): boolean => {
-    if (arg1.id === arg2.id && JSON.stringify(arg1.options) === JSON.stringify(arg2.options))
+    if (arg1.id === arg2.id && arg1.size === arg2.size && arg1.temperature === arg2.temperature)
       return true;
     return false;
   };
@@ -40,6 +43,15 @@ const OrderProvider = ({ children }: { children: React.ReactNode }) => {
 
           return newItems;
         });
+      },
+      deleteState: (item: ORDERFOOD) => {
+        setOrder((prev) => prev.filter((order) => !isEqual(order, item)));
+      },
+      getTotalPrice: () => {
+        return order.reduce((total, { unit, eachPrice }) => total + unit * eachPrice, 0);
+      },
+      getTotalUnit: () => {
+        return order.reduce((total, { unit }) => total + unit, 0);
       },
     },
   };
