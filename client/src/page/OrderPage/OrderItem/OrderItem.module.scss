@@ -1,0 +1,26 @@
+.item {
+  margin: 10px 20px;
+  height: 200px;
+
+  .img {
+    width: 160px;
+  }
+
+  .desc {
+    .name {
+      font-size: 24px;
+    }
+
+    .option {
+      font-size: 16px;
+      font-weight: bold;
+      background: #2ac1bc;
+      color: white;
+      text-align: center;
+      width: 80px;
+      height: 30px;
+      line-height: 30px;
+      border-radius: 999px;
+    }
+  }
+}
