@@ -1,5 +1,5 @@
 import React, { useState, createContext, Dispatch, SetStateAction } from 'react';
-import MainPage from '../page/MainPage';
+import CoverPage from '../page/CoverPage';
 
 type Context<T> = {
   state: Array<T>;
@@ -7,13 +7,15 @@ type Context<T> = {
     setState: Dispatch<SetStateAction<Array<T>>>;
     addPage: (arg: T) => void;
     removePage: () => void;
+    moveToCoverPage: () => void;
   };
 };
 
+const DefaultPage = CoverPage;
 const PageContext = createContext<Context<() => JSX.Element> | null>(null);
 
 const PageProvider = ({ children }: { children: React.ReactNode }) => {
-  const [page, setPage] = useState<(() => JSX.Element)[]>([MainPage]);
+  const [page, setPage] = useState<(() => JSX.Element)[]>([DefaultPage]);
 
   const addPage = (page: () => JSX.Element) => {
     setPage((prev) => [...prev, page]);
@@ -26,12 +28,17 @@ const PageProvider = ({ children }: { children: React.ReactNode }) => {
     });
   };
 
+  const moveToCoverPage = () => {
+    setPage([CoverPage]);
+  };
+
   const context = {
     state: page,
     action: {
       setState: setPage,
       addPage,
       removePage,
+      moveToCoverPage,
     },
   };
 
