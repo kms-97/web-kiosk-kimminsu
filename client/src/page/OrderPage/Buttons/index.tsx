@@ -1,21 +1,17 @@
-import { useContext, useState } from 'react';
-import { FlexContainer, ModalContainer, TransperentButton } from 'component';
-import { PageContext } from 'context';
-import { click } from 'util/pointerEvent';
-import PaymentModal from 'page/ModalPage/PaymentModal';
+import { FlexContainer, TransperentButton } from 'component';
+import { PointerEventHandler } from 'react';
 import styles from './Buttons.module.scss';
 
-const Buttons = () => {
-  const page = useContext(PageContext);
-  const [isPayProcess, setIsPayProcess] = useState<boolean>(false);
+interface props {
+  openPaymentModal: PointerEventHandler;
+  closeOrderPage: PointerEventHandler;
+}
 
-  const openPaymentModal = click({ callback: setIsPayProcess, arg: true });
-  const closePaymentModal = click({ callback: setIsPayProcess, arg: false, exact: true });
-
+const Buttons = ({ openPaymentModal, closeOrderPage }: props) => {
   return (
     <>
       <FlexContainer flow="row" wrap="nowrap" className={styles.middle}>
-        <TransperentButton className={styles.button} onPointerDown={page?.action.removePage}>
+        <TransperentButton className={styles.button} onPointerDown={closeOrderPage}>
           취소
         </TransperentButton>
         <TransperentButton
@@ -25,13 +21,6 @@ const Buttons = () => {
           결제
         </TransperentButton>
       </FlexContainer>
-      {isPayProcess ? (
-        <ModalContainer onPointerDown={closePaymentModal}>
-          <PaymentModal closeModal={closePaymentModal} />
-        </ModalContainer>
-      ) : (
-        ''
-      )}
     </>
   );
 };
