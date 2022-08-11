@@ -1,0 +1,25 @@
+.result {
+  padding: 30px;
+  height: inherit;
+
+  .title {
+    width: 100%;
+    text-align: left;
+    font-size: 40px;
+    font-weight: bolder;
+  }
+
+  .receipt {
+    margin: auto;
+    font-size: 20px;
+
+    .content {
+      width: 80%;
+
+      .number {
+        font-size: 24px;
+        font-weight: bold;
+      }
+    }
+  }
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import FlexContainer from '../layout/FlexContainer';
+import FlexContainer from 'component/layout/FlexContainer';
 import styles from './ModalContainer.module.scss';
 
 interface props extends React.ComponentProps<'div'> {

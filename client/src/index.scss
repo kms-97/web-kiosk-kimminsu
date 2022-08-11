@@ -8,6 +8,7 @@ html {
   align-items: center;
   justify-content: center;
   background-color: aliceblue;
+  height: 100vh;
 }
 
 body {
@@ -15,6 +16,16 @@ body {
   width: 700px;
   height: 1200px;
   background-color: white;
+  overflow: hidden;
+}
+
+#root {
+  display: flex;
+
+  .page {
+    width: 700px;
+    height: 1200px;
+  }
 }
 
 header {
@@ -22,16 +33,11 @@ header {
 }
 
 main {
-  height: 980px;
+  height: 838px;
 }
 
 footer {
   position: relative;
-  height: 150px;
+  height: 292px;
   z-index: 1;
-  overflow: hidden;
-}
-
-#root {
-  height: 100%;
 }

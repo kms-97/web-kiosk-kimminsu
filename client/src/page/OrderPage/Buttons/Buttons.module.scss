@@ -1,0 +1,28 @@
+.bottom {
+  background-color: #111;
+  height: 60px;
+  padding: 0 30px;
+
+  .button {
+    width: 100px;
+    height: 100%;
+    font-size: 20px;
+    color: white;
+  }
+}
+
+.middle {
+  background-color: #222;
+  height: 72px;
+
+  .button {
+    width: 50%;
+    height: 100%;
+    font-size: 30px;
+    color: white;
+
+    &.orderBtn {
+      background-color: #2ac1bc;
+    }
+  }
+}

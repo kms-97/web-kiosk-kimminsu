@@ -1,0 +1,15 @@
+.middle {
+  background-color: #222;
+  height: 72px;
+
+  .button {
+    width: 50%;
+    height: 100%;
+    font-size: 30px;
+    color: white;
+
+    &.orderBtn {
+      background-color: #2ac1bc;
+    }
+  }
+}

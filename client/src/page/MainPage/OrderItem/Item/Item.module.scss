@@ -1,0 +1,39 @@
+.card {
+  position: relative;
+  background-color: white;
+  width: auto;
+  min-width: 160px;
+  height: 90%;
+  padding: 10px;
+
+  .name {
+    font-size: 16px;
+    z-index: 1;
+  }
+
+  .delete {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    cursor: pointer;
+    z-index: 0;
+  }
+
+  .option {
+    background: #2ac1bc;
+    color: white;
+    width: 50%;
+    text-align: center;
+    height: 16px;
+    line-height: 16px;
+    border-radius: 999px;
+  }
+
+  .minus {
+    fill: none;
+    stroke: #000;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 2px;
+  }
+}

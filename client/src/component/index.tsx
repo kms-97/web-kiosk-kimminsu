@@ -7,6 +7,10 @@ import TransperentButton from './button/TransperentButton';
 import OutlineButton from './button/OutlineButton';
 import CircleButton from './button/CircleButton';
 import Img from './img/Img';
+import PlusIcon from './icon/Plus';
+import MinusIcon from './icon/Minus';
+import CrossIcon from './icon/Cross';
+import BestIcon from './icon/Best';
 
 export {
   FlexContainer,
@@ -18,4 +22,8 @@ export {
   OutlineButton,
   CircleButton,
   Img,
+  PlusIcon,
+  MinusIcon,
+  CrossIcon,
+  BestIcon,
 };

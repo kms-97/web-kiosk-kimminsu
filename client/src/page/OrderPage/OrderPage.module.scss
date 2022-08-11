@@ -1,0 +1,20 @@
+.order {
+  padding: 30px;
+  height: 1068px;
+  font-size: 20px;
+
+  * {
+    flex-shrink: 1;
+  }
+
+  .title {
+    width: 100%;
+    text-align: left;
+    font-size: 40px;
+    font-weight: bolder;
+  }
+
+  .price {
+    font-size: 28px;
+  }
+}

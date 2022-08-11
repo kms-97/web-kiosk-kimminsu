@@ -1,10 +1,11 @@
-import MainPage from './page/MainPage';
+import Router from 'router';
+import { GeneralProvider } from './context';
 
 function App() {
   return (
-    <>
-      <MainPage />
-    </>
+    <GeneralProvider>
+      <Router />
+    </GeneralProvider>
   );
 }
 

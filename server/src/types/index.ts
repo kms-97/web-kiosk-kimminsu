@@ -31,8 +31,4 @@ export class date {
   year: number;
   month: number;
   date: number;
-
-  toString() {
-    return `${this.year}-${this.month}-${this.date}`;
-  }
 }

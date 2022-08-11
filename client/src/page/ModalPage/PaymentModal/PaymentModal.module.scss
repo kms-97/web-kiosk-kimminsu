@@ -1,0 +1,39 @@
+.modal {
+  width: 80%;
+  background-color: white;
+  padding: 20px;
+
+  .title {
+    width: 100%;
+    text-align: left;
+    font-size: 32px;
+    font-weight: bolder;
+  }
+
+  .currency {
+    .button {
+      width: 70px;
+      height: 30px;
+    }
+  }
+
+  .payment {
+    width: 60%;
+
+    .button {
+      width: 45%;
+      height: 60px;
+      background-color: #2ac1bc;
+      color: white;
+      font-size: 24px;
+    }
+  }
+
+  .cancel {
+    width: 60%;
+    height: 30px;
+    background-color: grey;
+    color: white;
+    font-size: 16px;
+  }
+}

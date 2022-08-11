@@ -1,15 +1,20 @@
 import styles from './OutlineButton.module.scss';
 
 interface props extends React.ComponentProps<'button'> {
-  isActive: boolean;
-  isSelected: boolean;
+  isActive?: boolean;
+  isSelected?: boolean;
 }
 
-const OutlineButton = ({ isActive, isSelected, onPointerDown, className, children }: props) => {
+const OutlineButton = ({
+  isActive = true,
+  isSelected = false,
+  onPointerDown,
+  className,
+  children,
+}: props) => {
   const classString = `
     ${styles.button}
     ${isSelected ? styles.selected : ''}
-    ${isActive ? '' : styles.disabled}
     ${className ?? ''}
   `;
 

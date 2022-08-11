@@ -4,7 +4,7 @@ import styles from './NavContainer.module.scss';
 interface props extends React.ComponentProps<'nav'>, FLEXPROPS {}
 
 const NavContainer = (
-  { flow, wrap, children, className }: props,
+  { flow = 'row', wrap = 'nowrap', children, className }: props,
   ref?: React.LegacyRef<HTMLElement>,
 ) => {
   const classString = `

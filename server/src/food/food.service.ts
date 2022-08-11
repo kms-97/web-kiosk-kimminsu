@@ -2,7 +2,7 @@ import { Inject, Injectable } from '@nestjs/common';
 import { FoodDto } from 'src/dto/food.dto';
 import { Food } from 'src/entity/food.entity';
 import { Between, DataSource } from 'typeorm';
-import { getToday, getWeekAgo } from 'src/util/time';
+import { dateClassToString, getToday, getWeekAgo } from 'src/util/time';
 import { OrderItem } from 'src/entity/orderItem.entity';
 
 @Injectable()
@@ -22,7 +22,7 @@ export class FoodService {
 
     const orderItemEntities = await this.dataSource.manager.find(OrderItem, {
       where: {
-        createdAt: Between(startDate.toString(), today.toString()),
+        createdAt: Between(dateClassToString(startDate), dateClassToString(today)),
       },
     });
 
@@ -44,7 +44,7 @@ export class FoodService {
 
     const orderItemEntities = await this.dataSource.manager.find(OrderItem, {
       where: {
-        createdAt: Between(startDate.toString(), today.toString()),
+        createdAt: Between(dateClassToString(startDate), dateClassToString(today)),
       },
     });
 
