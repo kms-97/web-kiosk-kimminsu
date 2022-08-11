@@ -1,4 +1,11 @@
 .item {
+  position: relative;
   width: 33.3%;
   cursor: pointer;
+
+  .best {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
 }

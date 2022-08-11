@@ -10,6 +10,7 @@ import Img from './img/Img';
 import PlusIcon from './icon/Plus';
 import MinusIcon from './icon/Minus';
 import CrossIcon from './icon/Cross';
+import BestIcon from './icon/Best';
 
 export {
   FlexContainer,
@@ -24,4 +25,5 @@ export {
   PlusIcon,
   MinusIcon,
   CrossIcon,
+  BestIcon,
 };

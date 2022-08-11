@@ -1,4 +1,4 @@
-import { FlexContainer, Img } from 'component';
+import { FlexContainer, Img, BestIcon } from 'component';
 import { click } from 'util/pointerEvent';
 import styles from './Item.module.scss';
 
@@ -17,6 +17,7 @@ const Item = ({ food, onClick }: props) => {
       onPointerDown={changeSelectedFoodId}
       className={styles.item}
     >
+      {food.star ? <BestIcon width="60px" height="60px" className={styles.best} /> : ''}
       <Img src={food.imgURL} description={food.name} />
       <div style={{ margin: '5px 0' }}>{food.name}</div>
       <div>{food.basePrice}원</div>
