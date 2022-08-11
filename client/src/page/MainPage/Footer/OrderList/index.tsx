@@ -1,6 +1,6 @@
 import { useContext } from 'react';
-import { DragContainer, FlexContainer } from '../../../../component';
-import { OrderContext } from '../../../../context';
+import { DragContainer, FlexContainer } from 'component';
+import { OrderContext } from 'context';
 import OrderItem from '../OrderItem';
 import styles from './OrderList.module.scss';
 

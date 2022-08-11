@@ -1,5 +1,5 @@
-import indicator from '../../asset/indicator.gif';
-import { FlexContainer, Img } from '../../component';
+import indicator from 'asset/indicator.gif';
+import { FlexContainer, Img } from 'component';
 import styles from './LoadingPage.module.scss';
 
 const LoadingPage = ({ msg }: { msg: string }) => {

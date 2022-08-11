@@ -1,6 +1,6 @@
 import React from 'react';
-import { NavContainer } from '../../../component';
-import DragContainer from '../../../component/layout/DragContainer';
+import { NavContainer } from 'component';
+import DragContainer from 'component/layout/DragContainer';
 import CategoryTab from './CategoryTab';
 
 interface props {

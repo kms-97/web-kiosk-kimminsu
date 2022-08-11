@@ -1,5 +1,5 @@
-import { FlexContainer, Img } from '../../../../component';
-import { click } from '../../../../util/pointerEvent';
+import { FlexContainer, Img } from 'component';
+import { click } from 'util/pointerEvent';
 import styles from './FoodItem.module.scss';
 
 interface props {

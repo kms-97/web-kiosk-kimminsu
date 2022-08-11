@@ -1,8 +1,8 @@
 import { useContext, useState } from 'react';
-import { FlexContainer, ModalContainer, TransperentButton } from '../../../component';
-import { PageContext } from '../../../context';
-import { click } from '../../../util/pointerEvent';
-import PaymentModal from '../../ModalPage/PaymentModal';
+import { FlexContainer, ModalContainer, TransperentButton } from 'component';
+import { PageContext } from 'context';
+import { click } from 'util/pointerEvent';
+import PaymentModal from 'page/ModalPage/PaymentModal';
 import styles from './Footer.module.scss';
 
 const Footer = () => {

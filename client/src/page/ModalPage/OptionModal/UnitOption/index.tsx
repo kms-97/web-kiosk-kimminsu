@@ -1,5 +1,5 @@
-import { FlexContainer, CircleButton } from '../../../../component';
-import { click } from '../../../../util/pointerEvent';
+import { FlexContainer, CircleButton } from 'component';
+import { click } from 'util/pointerEvent';
 import styles from './UnitOption.module.scss';
 
 interface props {

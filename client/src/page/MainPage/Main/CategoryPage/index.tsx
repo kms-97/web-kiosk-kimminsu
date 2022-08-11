@@ -1,9 +1,9 @@
 import { useContext } from 'react';
-import { DragContainer, FlexContainer, ModalContainer } from '../../../../component';
-import { SelectedFoodContext } from '../../../../context';
-import { click } from '../../../../util/pointerEvent';
+import { DragContainer, FlexContainer, ModalContainer } from 'component';
+import { SelectedFoodContext } from 'context';
+import { click } from 'util/pointerEvent';
 import FoodItem from '../FoodItem';
-import OptionModal from '../../../ModalPage/OptionModal';
+import OptionModal from 'page/ModalPage/OptionModal';
 
 interface props {
   foods: FOOD[];

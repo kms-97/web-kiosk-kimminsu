@@ -1,6 +1,6 @@
 import { useContext } from 'react';
-import { FlexContainer } from '../../component';
-import { OrderContext } from '../../context';
+import { FlexContainer } from 'component';
+import { OrderContext } from 'context';
 import Footer from './Footer';
 import OrderList from './OrderList';
 import styles from './OrderPage.module.scss';

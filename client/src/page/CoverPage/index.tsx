@@ -1,8 +1,8 @@
 import { useContext, useEffect } from 'react';
-import { FlexContainer, OutlineButton } from '../../component';
-import { OrderContext, PageContext } from '../../context';
-import { click } from '../../util/pointerEvent';
-import MainPage from '../MainPage';
+import { FlexContainer, OutlineButton } from 'component';
+import { OrderContext, PageContext } from 'context';
+import { click } from 'util/pointerEvent';
+import MainPage from 'page/MainPage';
 import styles from './CoverPage.module.scss';
 
 const CoverPage = () => {

@@ -1,7 +1,7 @@
 import { useContext } from 'react';
-import { TransperentButton } from '../../../../component';
-import { ActiveCategoryIdContext } from '../../../../context';
-import { click } from '../../../../util/pointerEvent';
+import { TransperentButton } from 'component';
+import { ActiveCategoryIdContext } from 'context';
+import { click } from 'util/pointerEvent';
 import styles from './CategoryTab.module.scss';
 
 interface props {

@@ -1,5 +1,5 @@
 import React, { useState, createContext, Dispatch, SetStateAction } from 'react';
-import CoverPage from '../page/CoverPage';
+import CoverPage from 'page/CoverPage';
 
 type Context<T> = {
   state: Array<T>;

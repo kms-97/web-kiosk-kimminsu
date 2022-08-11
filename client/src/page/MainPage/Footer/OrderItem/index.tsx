@@ -1,14 +1,8 @@
 import { useContext } from 'react';
-import {
-  CrossIcon,
-  FlexContainer,
-  MinusIcon,
-  PlusIcon,
-  TransperentButton,
-} from '../../../../component';
-import { SIZE_STRING, TEMP_STRING } from '../../../../constant';
-import { OrderContext } from '../../../../context';
-import { click } from '../../../../util/pointerEvent';
+import { CrossIcon, FlexContainer, MinusIcon, PlusIcon, TransperentButton } from 'component';
+import { SIZE_STRING, TEMP_STRING } from 'constant';
+import { OrderContext } from 'context';
+import { click } from 'util/pointerEvent';
 import styles from './OrderItem.module.scss';
 
 interface props {

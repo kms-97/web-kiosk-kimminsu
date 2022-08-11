@@ -1,5 +1,5 @@
-import { FlexContainer, Img } from '../../../component';
-import { SIZE_STRING, TEMP_STRING } from '../../../constant';
+import { FlexContainer, Img } from 'component';
+import { SIZE_STRING, TEMP_STRING } from 'constant';
 import styles from './OrderItem.module.scss';
 
 interface props {

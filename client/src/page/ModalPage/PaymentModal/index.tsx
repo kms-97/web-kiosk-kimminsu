@@ -1,8 +1,8 @@
-import { PointerEventHandler, useContext, useLayoutEffect, useState, useRef } from 'react';
-import { FlexContainer, OutlineButton, TransperentButton } from '../../../component';
-import { CreditContext, OrderContext, PageContext, PaymentContext } from '../../../context';
-import { click } from '../../../util/pointerEvent';
-import ResultPage from '../../ResultPage';
+import { PointerEventHandler, useContext, useLayoutEffect, useState } from 'react';
+import { FlexContainer, OutlineButton, TransperentButton } from 'component';
+import { CreditContext, OrderContext, PageContext, PaymentContext } from 'context';
+import { click } from 'util/pointerEvent';
+import ResultPage from 'page/ResultPage';
 import styles from './PaymentModal.module.scss';
 
 interface props {

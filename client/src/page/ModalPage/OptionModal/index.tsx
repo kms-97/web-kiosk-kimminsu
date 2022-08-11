@@ -6,13 +6,13 @@ import {
   useEffect,
   useContext,
 } from 'react';
-import { FlexContainer, Img, TransperentButton } from '../../../component';
+import { FlexContainer, Img, TransperentButton } from 'component';
 import SizeOption from './SizeOption';
 import TemperatureOption from './TemperatureOption';
 import styles from './OptionModal.module.scss';
 import UnitOption from './UnitOption';
-import { click } from '../../../util/pointerEvent';
-import { OptionContext, OrderContext, SelectedFoodContext } from '../../../context';
+import { click } from 'util/pointerEvent';
+import { OptionContext, OrderContext, SelectedFoodContext } from 'context';
 
 interface props {
   food: FOOD;

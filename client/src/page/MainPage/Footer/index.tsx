@@ -1,8 +1,8 @@
 import { useContext } from 'react';
-import { FlexContainer, TransperentButton } from '../../../component';
-import { OrderContext, PageContext } from '../../../context';
-import { click } from '../../../util/pointerEvent';
-import OrderPage from '../../OrderPage';
+import { FlexContainer, TransperentButton } from 'component';
+import { OrderContext, PageContext } from 'context';
+import { click } from 'util/pointerEvent';
+import OrderPage from 'page/OrderPage';
 import styles from './Footer.module.scss';
 import OrderList from './OrderList';
 

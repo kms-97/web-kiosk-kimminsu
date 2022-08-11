@@ -1,7 +1,7 @@
 import React from 'react';
-import { FlexContainer, OutlineButton } from '../../../../component';
-import { TEMP_STRING } from '../../../../constant';
-import { click } from '../../../../util/pointerEvent';
+import { FlexContainer, OutlineButton } from 'component';
+import { TEMP_STRING } from 'constant';
+import { click } from 'util/pointerEvent';
 import styles from './TemperatureOption.module.scss';
 
 interface props {

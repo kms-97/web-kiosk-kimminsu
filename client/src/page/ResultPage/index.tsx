@@ -1,9 +1,9 @@
 import { useContext, useRef, useEffect, useLayoutEffect, useState } from 'react';
-import { postOrder } from '../../api';
-import { FlexContainer } from '../../component';
-import { PAYMENT_STRING, SIZE_STRING, TEMP_STRING } from '../../constant';
-import { CreditContext, OrderContext, PageContext, PaymentContext } from '../../context';
-import LoadingPage from '../LoadingPage';
+import { postOrder } from 'api';
+import { FlexContainer } from 'component';
+import { PAYMENT_STRING, SIZE_STRING, TEMP_STRING } from 'constant';
+import { CreditContext, OrderContext, PageContext, PaymentContext } from 'context';
+import LoadingPage from 'page/LoadingPage';
 import styles from './ResultPage.module.scss';
 
 const ResultPage = () => {

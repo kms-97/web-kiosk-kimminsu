@@ -1,6 +1,6 @@
 import { useEffect, useState, useLayoutEffect, useContext } from 'react';
-import { CategoriesContext, OptionContext, RenderCategoryIdContext } from '../../context';
-import { getCategory, getFood, getOption } from '../../api';
+import { CategoriesContext, OptionContext, RenderCategoryIdContext } from 'context';
+import { getCategory, getFood, getOption } from 'api';
 import Main from './Main';
 import Header from './Header';
 import Footer from './Footer';

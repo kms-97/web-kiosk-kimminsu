@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import { getTranslateValues } from '../../util/transform';
+import { getTranslateValues } from 'util/transform';
 import styles from './DragContainer.module.scss';
 
 interface props extends React.ComponentProps<'div'> {
