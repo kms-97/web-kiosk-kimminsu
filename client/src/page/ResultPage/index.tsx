@@ -42,7 +42,7 @@ const ResultPage = () => {
     const countDown = () => {
       if (leftCount === 0) {
         clearInterval(counter);
-        page?.action.moveToCoverPage();
+        page?.action.moveToDefaultPage();
       }
 
       print();

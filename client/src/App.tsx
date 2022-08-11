@@ -1,22 +1,12 @@
-import { useContext } from 'react';
-import { GeneralProvider, PageContext } from './context';
-import CoverPage from './page/CoverPage';
-
-const DefaultPage = CoverPage;
+import Router from 'router';
+import { GeneralProvider } from './context';
 
 function App() {
   return (
     <GeneralProvider>
-      <PageContainer />
+      <Router />
     </GeneralProvider>
   );
 }
-
-const PageContainer = () => {
-  const pages = useContext(PageContext);
-  const ActivePage = pages?.state ? [...pages?.state].pop() ?? DefaultPage : DefaultPage;
-
-  return <ActivePage />;
-};
 
 export default App;

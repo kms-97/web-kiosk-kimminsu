@@ -16,7 +16,7 @@ const PaymentModal = ({ closeModal }: props) => {
   const credit = useContext(CreditContext);
 
   const moveToResultPage = () => {
-    page?.action.addPage(ResultPage);
+    page?.action.addPage('result');
   };
 
   const payWithCard = () => {

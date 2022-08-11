@@ -11,7 +11,7 @@ const Footer = () => {
 
   const openPaymentModal = click({ callback: setIsPayProcess, arg: true });
   const closePaymentModal = click({ callback: setIsPayProcess, arg: false, exact: true });
-  const goToCover = click({ callback: page?.action.moveToCoverPage! });
+  const goToCover = click({ callback: page?.action.moveToDefaultPage! });
 
   return (
     <>

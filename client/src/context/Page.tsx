@@ -1,23 +1,23 @@
 import React, { useState, createContext, Dispatch, SetStateAction } from 'react';
-import CoverPage from 'page/CoverPage';
 
+type PAGE = 'cover' | 'main' | 'order' | 'result';
 type Context<T> = {
   state: Array<T>;
   action: {
     setState: Dispatch<SetStateAction<Array<T>>>;
-    addPage: (arg: T) => void;
+    addPage: (arg: PAGE) => void;
     removePage: () => void;
-    moveToCoverPage: () => void;
+    moveToDefaultPage: () => void;
   };
 };
 
-const DefaultPage = CoverPage;
-const PageContext = createContext<Context<() => JSX.Element> | null>(null);
+const DefaultPage = 'cover';
+const PageContext = createContext<Context<PAGE> | null>(null);
 
 const PageProvider = ({ children }: { children: React.ReactNode }) => {
-  const [page, setPage] = useState<(() => JSX.Element)[]>([DefaultPage]);
+  const [page, setPage] = useState<PAGE[]>([DefaultPage]);
 
-  const addPage = (page: () => JSX.Element) => {
+  const addPage = (page: PAGE) => {
     setPage((prev) => [...prev, page]);
   };
 
@@ -28,8 +28,8 @@ const PageProvider = ({ children }: { children: React.ReactNode }) => {
     });
   };
 
-  const moveToCoverPage = () => {
-    setPage([CoverPage]);
+  const moveToDefaultPage = () => {
+    setPage([DefaultPage]);
   };
 
   const context = {
@@ -38,7 +38,7 @@ const PageProvider = ({ children }: { children: React.ReactNode }) => {
       setState: setPage,
       addPage,
       removePage,
-      moveToCoverPage,
+      moveToDefaultPage,
     },
   };
 

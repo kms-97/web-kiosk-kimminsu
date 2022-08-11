@@ -12,7 +12,7 @@ const Footer = () => {
   const discardAllOrders = click({ callback: orders?.action.setState!, arg: [] });
   const totalUnit = orders?.action.getTotalUnit()!;
   const toOrderPage = click({ callback: page?.action.addPage!, arg: OrderPage });
-  const goToCover = click({ callback: page?.action.moveToCoverPage! });
+  const goToCover = click({ callback: page?.action.moveToDefaultPage! });
 
   return (
     <footer>
