@@ -6,7 +6,7 @@ import styles from './SizeOption.module.scss';
 
 interface props {
   option: SIZE_PRICE;
-  size: string;
+  size: string | null;
   selectSize: (size: string) => void;
 }
 

@@ -22,8 +22,8 @@ interface props {
 const OptionModal = ({ food, closeModal }: props) => {
   const option = useContext(OptionContext);
   const [eachPrice, setEachPrice] = useState<number>(0);
-  const [selectedSize, setSelectedSize] = useState<string>('s');
-  const [selectedTemperature, setSelectedTemperature] = useState<string>('h');
+  const [selectedSize, setSelectedSize] = useState<string | null>(null);
+  const [selectedTemperature, setSelectedTemperature] = useState<string | null>(null);
   const [unit, setUnit] = useState<number>(1);
   const order = useContext(OrderContext);
   const selectedFood = useContext(SelectedFoodContext);
@@ -35,11 +35,11 @@ const OptionModal = ({ food, closeModal }: props) => {
   }, [food]);
 
   useEffect(() => {
-    setEachPrice(
-      Number(food.basePrice) +
-        Number(options.current.size[selectedSize])! +
-        Number(options.current.temperature[selectedTemperature])!,
-    );
+    const sizePrice = selectedSize ? Number(options.current.size[selectedSize]) : 0;
+    const tempPrice = selectedTemperature
+      ? Number(options.current.temperature[selectedTemperature])
+      : 0;
+    setEachPrice(Number(food.basePrice) + sizePrice + tempPrice);
   }, [selectedSize, selectedTemperature]);
 
   const increaseUnit = () => {
@@ -100,6 +100,7 @@ const OptionModal = ({ food, closeModal }: props) => {
         <TransperentButton
           className={`${styles.button} ${styles.primary}`}
           onPointerDown={onClickSubmitBtn}
+          isActive={Boolean(selectedSize && selectedTemperature)}
         >
           완료
         </TransperentButton>

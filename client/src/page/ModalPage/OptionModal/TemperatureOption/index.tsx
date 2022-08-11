@@ -6,7 +6,7 @@ import styles from './TemperatureOption.module.scss';
 
 interface props {
   option: TEMPERATURE_PRICE;
-  temperature: string;
+  temperature: string | null;
   selectTemperature: (temp: string) => void;
 }
 
