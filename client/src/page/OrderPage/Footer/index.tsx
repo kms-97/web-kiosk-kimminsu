@@ -11,6 +11,7 @@ const Footer = () => {
 
   const openPaymentModal = click({ callback: setIsPayProcess, arg: true });
   const closePaymentModal = click({ callback: setIsPayProcess, arg: false, exact: true });
+  const goToCover = click({ callback: page?.action.moveToCoverPage! });
 
   return (
     <>
@@ -32,7 +33,9 @@ const Footer = () => {
         justifyContent="end"
         className={styles.bottom}
       >
-        <TransperentButton className={styles.button}>돌아가기</TransperentButton>
+        <TransperentButton className={styles.button} onPointerDown={goToCover}>
+          돌아가기
+        </TransperentButton>
         <TransperentButton className={styles.button} isActive={false}>
           검색하기
         </TransperentButton>

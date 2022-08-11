@@ -12,6 +12,7 @@ const Footer = () => {
   const discardAllOrders = click({ callback: orders?.action.setState!, arg: [] });
   const totalUnit = orders?.action.getTotalUnit()!;
   const toOrderPage = click({ callback: page?.action.addPage!, arg: OrderPage });
+  const goToCover = click({ callback: page?.action.moveToCoverPage! });
 
   return (
     <footer>
@@ -39,7 +40,9 @@ const Footer = () => {
         justifyContent="end"
         className={styles.bottom}
       >
-        <TransperentButton className={styles.button}>돌아가기</TransperentButton>
+        <TransperentButton className={styles.button} onPointerDown={goToCover}>
+          돌아가기
+        </TransperentButton>
         <TransperentButton className={styles.button}>검색하기</TransperentButton>
       </FlexContainer>
     </footer>
