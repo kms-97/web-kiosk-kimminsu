@@ -14,7 +14,6 @@ const Main = ({ foods }: props) => {
   return (
     <main>
       <FlipContainer
-        direction="x"
         rightFlipEvent={activeCategoryId?.action.increase}
         leftFilpEvent={activeCategoryId?.action.decrease}
         className={styles.container}
