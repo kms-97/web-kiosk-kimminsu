@@ -3,6 +3,7 @@ import { postOrder } from '../../api';
 import { FlexContainer } from '../../component';
 import { PAYMENT_STRING, SIZE_STRING, TEMP_STRING } from '../../constant';
 import { CreditContext, OrderContext, PageContext, PaymentContext } from '../../context';
+import LoadingPage from '../LoadingPage';
 import styles from './ResultPage.module.scss';
 
 const ResultPage = () => {
@@ -51,7 +52,12 @@ const ResultPage = () => {
     let counter = setInterval(countDown, 1000);
   };
 
-  if (isloading) return <>통신...</>;
+  if (isloading)
+    return (
+      <>
+        <LoadingPage msg="결제가 진행 중입니다..." />
+      </>
+    );
   return (
     <div className="page">
       <FlexContainer flow="column" gap="20px" justifyContent="start" className={styles.result}>
