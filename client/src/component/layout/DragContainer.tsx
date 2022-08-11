@@ -34,6 +34,7 @@ const DragContainer = ({ children, direction = 'x', className }: props) => {
   };
 
   const mouseMoveHandler = (e: PointerEvent) => {
+    e.preventDefault();
     const $target = targetRef.current;
     const $container = containerRef.current;
 

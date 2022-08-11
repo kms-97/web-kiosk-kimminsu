@@ -38,6 +38,7 @@ const FlipContainer = ({
   }, []);
 
   const mouseDownHandler = (e: PointerEvent) => {
+    e.preventDefault();
     const $target = targetRef.current;
     if ($target) {
       ($target.style as CSSStyleDeclaration).cursor = `grabbing`;
