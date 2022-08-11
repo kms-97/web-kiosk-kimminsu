@@ -4,6 +4,7 @@ import { SelectedFoodContext } from 'context';
 import { click } from 'util/pointerEvent';
 import Item from '../Item';
 import OptionModal from 'page/ModalPage/OptionModal';
+import styles from './ItemContainer.module.scss';
 
 interface props {
   foods: FOOD[];
@@ -28,9 +29,11 @@ const ItemContainer = ({ foods }: props) => {
           alignContent="start"
           alignItems="start"
         >
-          {foods.map((food) => (
-            <Item food={food} onClick={selectFood} key={food.id} />
-          ))}
+          {foods.length ? (
+            foods.map((food) => <Item food={food} onClick={selectFood} key={food.id} />)
+          ) : (
+            <div className={styles.empty}>주문 가능한 항목이 없습니다.</div>
+          )}
         </FlexContainer>
       </DragContainer>
       {selectedFood?.state ? (
