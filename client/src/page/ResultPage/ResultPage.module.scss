@@ -12,13 +12,20 @@
   .receipt {
     margin: auto;
     font-size: 20px;
+    border: solid 2px #2ac1bc;
+    border-radius: 50px;
 
-    .content {
-      width: 80%;
+    .container {
+      height: 900px;
+      padding: 30px;
 
-      .number {
-        font-size: 24px;
-        font-weight: bold;
+      .content {
+        width: 80%;
+
+        .number {
+          font-size: 24px;
+          font-weight: bold;
+        }
       }
     }
   }

@@ -1,8 +1,10 @@
 .cover {
   height: inherit;
+  background-color: #2ac1bc;
+  color: white;
 
   .title {
-    font-size: 60px;
+    font-size: 72px;
     font-weight: bold;
   }
 
@@ -10,5 +12,11 @@
     width: 300px;
     height: 80px;
     font-size: 28px;
+    color: white;
+  }
+
+  .icon {
+    position: absolute;
+    fill: white;
   }
 }

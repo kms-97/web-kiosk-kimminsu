@@ -1,12 +1,11 @@
 import { FlexContainer, TransperentButton } from 'component';
-import { PageContext } from 'context';
-import { useContext } from 'react';
 import { click } from 'util/pointerEvent';
 import styles from './Footer.module.scss';
 
-const Footer = () => {
-  const page = useContext(PageContext);
-  const goToCover = click({ callback: page?.action.moveToDefaultPage! });
+interface props extends PAGE_PROPS {}
+
+const Footer = ({ setPage }: props) => {
+  const goToCover = click({ callback: setPage, arg: 'cover' });
 
   return (
     <FlexContainer

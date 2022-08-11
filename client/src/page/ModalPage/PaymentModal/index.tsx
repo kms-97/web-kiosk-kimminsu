@@ -1,37 +1,37 @@
-import { PointerEventHandler, useContext, useLayoutEffect, useState } from 'react';
-import { FlexContainer, OutlineButton, TransperentButton } from 'component';
-import { CreditContext, OrderContext, PageContext, PaymentContext } from 'context';
+import {
+  PointerEventHandler,
+  useContext,
+  useLayoutEffect,
+  useState,
+  Dispatch,
+  SetStateAction,
+} from 'react';
+import { FlexContainer, ModalContainer, OutlineButton, TransperentButton } from 'component';
+import { OrderContext } from 'context';
 import { click } from 'util/pointerEvent';
 import styles from './PaymentModal.module.scss';
 
 interface props {
   closeModal: PointerEventHandler;
+  tryOrder: (method: PAYMENT, input: number) => void;
+  setCredit: Dispatch<SetStateAction<number>>;
 }
 
-const PaymentModal = ({ closeModal }: props) => {
-  const [paymentMethod, setPaymentMethod] = useState<'cash' | null>(null);
-  const page = useContext(PageContext);
-  const payment = useContext(PaymentContext);
-  const credit = useContext(CreditContext);
-
-  const moveToResultPage = () => {
-    page?.action.addPage('result');
-  };
+const PaymentModal = ({ closeModal, tryOrder, setCredit }: props) => {
+  const [openCashPage, setOpenCashPage] = useState<boolean>(false);
 
   const payWithCard = () => {
-    payment?.action.setState('card');
-    moveToResultPage();
+    tryOrder('card', 0);
   };
 
   const payWithCash = (input: number) => {
-    payment?.action.setState('cash');
-    credit?.action.setState(input);
-    moveToResultPage();
+    tryOrder('cash', 1000);
+    setCredit(input);
   };
 
   const SelectMethodPage = () => {
     const onClickCard = click({ callback: payWithCard });
-    const onClickCash = click({ callback: setPaymentMethod, arg: 'cash' });
+    const onClickCash = click({ callback: setOpenCashPage, arg: true });
 
     return (
       <FlexContainer flow="column" gap="30px">
@@ -70,7 +70,7 @@ const PaymentModal = ({ closeModal }: props) => {
       if (need) setIsOver(input >= need);
     }, [input, need]);
 
-    const cancel = click({ callback: () => setPaymentMethod(null) });
+    const cancel = click({ callback: () => setOpenCashPage(false) });
     const pay = click({ callback: () => payWithCash(input) });
 
     const InputButton = (unit: number) => {
@@ -120,9 +120,9 @@ const PaymentModal = ({ closeModal }: props) => {
   };
 
   return (
-    <div className={styles.modal}>
-      {paymentMethod === 'cash' ? <CashPage /> : <SelectMethodPage />}
-    </div>
+    <ModalContainer onPointerDown={closeModal}>
+      <div className={styles.modal}>{openCashPage ? <CashPage /> : <SelectMethodPage />}</div>
+    </ModalContainer>
   );
 };
 

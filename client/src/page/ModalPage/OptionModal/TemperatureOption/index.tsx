@@ -28,15 +28,18 @@ const TemperatureOption = ({ option, temperature, selectTemperature }: props) =>
   };
 
   return (
-    <FlexContainer flow="row" wrap="nowrap" justifyContent="spaceBetween">
-      {Object.entries(option).map(([name, addPrice]) => {
-        if (name !== 'id') {
-          return <Button key={name} name={name} addPrice={addPrice} />;
-        } else {
-          return <React.Fragment key={name}></React.Fragment>;
-        }
-      })}
-    </FlexContainer>
+    <>
+      <div>온도</div>
+      <FlexContainer flow="row" wrap="nowrap" justifyContent="spaceBetween">
+        {Object.entries(option).map(([name, addPrice]) => {
+          if (name !== 'id') {
+            return <Button key={name} name={name} addPrice={addPrice} />;
+          } else {
+            return <React.Fragment key={name}></React.Fragment>;
+          }
+        })}
+      </FlexContainer>
+    </>
   );
 };
 
