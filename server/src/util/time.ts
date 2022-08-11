@@ -5,7 +5,7 @@ export const getToday = (): date => {
   return {
     year: date.getFullYear(),
     month: date.getMonth() + 1,
-    date: date.getDate(),
+    date: date.getDate() + 1,
   };
 };
 
@@ -14,7 +14,7 @@ export const getWeekAgo = (baseDate: date): date => {
   return {
     year: date.getFullYear(),
     month: date.getMonth() + 1,
-    date: date.getDate(),
+    date: date.getDate() + 1,
   };
 };
 
@@ -25,4 +25,8 @@ export const convertDateStringToClass = (dateStr: Date | string): date => {
     month: date.getMonth() + 1,
     date: date.getDate(),
   };
+};
+
+export const dateClassToString = (date: date): string => {
+  return `${date.year}-${date.month}-${date.date}`;
 };
