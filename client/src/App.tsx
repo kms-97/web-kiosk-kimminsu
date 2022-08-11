@@ -16,11 +16,7 @@ const PageContainer = () => {
   const pages = useContext(PageContext);
   const ActivePage = pages?.state ? [...pages?.state].pop() ?? DefaultPage : DefaultPage;
 
-  return (
-    <>
-      <ActivePage />
-    </>
-  );
+  return <ActivePage />;
 };
 
 export default App;

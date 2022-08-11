@@ -20,13 +20,10 @@ body {
 
 #root {
   display: flex;
-  width: inherit;
-  height: inherit;
 
   .page {
-    position: absolute;
-    width: inherit;
-    height: inherit;
+    width: 700px;
+    height: 1200px;
   }
 }
 
