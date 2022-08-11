@@ -1,10 +1,10 @@
 import { useContext } from 'react';
 import { DragContainer, FlexContainer } from 'component';
 import { OrderContext } from 'context';
-import OrderItem from '../OrderItem';
-import styles from './OrderList.module.scss';
+import Item from '../Item';
+import styles from './ItemContainer.module.scss';
 
-const OrderList = () => {
+const ItemContainer = () => {
   const orders = useContext(OrderContext);
   const totalUnit = orders?.action.getTotalUnit();
   const totalPrice = orders?.action.getTotalPrice().toLocaleString();
@@ -18,7 +18,7 @@ const OrderList = () => {
       <DragContainer direction="x" className={styles.list}>
         <FlexContainer flow="row" wrap="nowrap" gap="10px" justifyContent="start">
           {orders?.state.map((order) => (
-            <OrderItem order={order} />
+            <Item order={order} />
           ))}
         </FlexContainer>
       </DragContainer>
@@ -26,4 +26,4 @@ const OrderList = () => {
   );
 };
 
-export default OrderList;
+export default ItemContainer;

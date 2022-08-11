@@ -2,14 +2,14 @@ import { useContext } from 'react';
 import { DragContainer, FlexContainer, ModalContainer } from 'component';
 import { SelectedFoodContext } from 'context';
 import { click } from 'util/pointerEvent';
-import FoodItem from '../FoodItem';
+import Item from '../Item';
 import OptionModal from 'page/ModalPage/OptionModal';
 
 interface props {
   foods: FOOD[];
 }
 
-const CategoryPage = ({ foods }: props) => {
+const ItemContainer = ({ foods }: props) => {
   const selectedFood = useContext(SelectedFoodContext);
 
   const selectFood = (foodId: number) => {
@@ -29,7 +29,7 @@ const CategoryPage = ({ foods }: props) => {
           alignItems="start"
         >
           {foods.map((food) => (
-            <FoodItem food={food} onClick={selectFood} key={food.id} />
+            <Item food={food} onClick={selectFood} key={food.id} />
           ))}
         </FlexContainer>
       </DragContainer>
@@ -44,4 +44,4 @@ const CategoryPage = ({ foods }: props) => {
   );
 };
 
-export default CategoryPage;
+export default ItemContainer;

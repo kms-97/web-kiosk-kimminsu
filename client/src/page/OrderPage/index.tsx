@@ -1,9 +1,10 @@
 import { useContext } from 'react';
 import { FlexContainer } from 'component';
 import { OrderContext } from 'context';
-import Footer from './Footer';
+import Buttons from './Buttons';
 import OrderList from './OrderList';
 import styles from './OrderPage.module.scss';
+import Footer from 'page/Common/Footer';
 
 const OrderPage = () => {
   const orders = useContext(OrderContext);
@@ -17,7 +18,8 @@ const OrderPage = () => {
           총 결제금액: {orders?.action.getTotalPrice()?.toLocaleString()} 원
         </div>
       </FlexContainer>
-      <Footer></Footer>
+      <Buttons />
+      <Footer />
     </div>
   );
 };

@@ -3,13 +3,13 @@ import { CrossIcon, FlexContainer, MinusIcon, PlusIcon, TransperentButton } from
 import { SIZE_STRING, TEMP_STRING } from 'constant';
 import { OrderContext } from 'context';
 import { click } from 'util/pointerEvent';
-import styles from './OrderItem.module.scss';
+import styles from './Item.module.scss';
 
 interface props {
   order: ORDERFOOD;
 }
 
-const OrderItem = ({ order }: props) => {
+const Item = ({ order }: props) => {
   const orders = useContext(OrderContext);
   const discardOrder = click({ callback: orders?.action.deleteState!, arg: order });
   const increaseUnit = click({
@@ -54,4 +54,4 @@ const OrderItem = ({ order }: props) => {
   );
 };
 
-export default OrderItem;
+export default Item;

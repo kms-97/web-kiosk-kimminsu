@@ -2,21 +2,19 @@ import { useContext } from 'react';
 import { FlexContainer, TransperentButton } from 'component';
 import { OrderContext, PageContext } from 'context';
 import { click } from 'util/pointerEvent';
-import OrderPage from 'page/OrderPage';
-import styles from './Footer.module.scss';
-import OrderList from './OrderList';
+import ItemContainer from './ItemContainer';
+import styles from './OrderItem.module.scss';
 
-const Footer = () => {
+const OrderItem = () => {
   const orders = useContext(OrderContext);
   const page = useContext(PageContext);
   const discardAllOrders = click({ callback: orders?.action.setState!, arg: [] });
   const totalUnit = orders?.action.getTotalUnit()!;
-  const toOrderPage = click({ callback: page?.action.addPage!, arg: OrderPage });
-  const goToCover = click({ callback: page?.action.moveToDefaultPage! });
+  const toOrderPage = click({ callback: page?.action.addPage!, arg: 'order' });
 
   return (
-    <footer>
-      <OrderList />
+    <>
+      <ItemContainer />
       <FlexContainer flow="row" wrap="nowrap" className={styles.middle}>
         <TransperentButton
           className={styles.button}
@@ -33,20 +31,8 @@ const Footer = () => {
           주문하기
         </TransperentButton>
       </FlexContainer>
-      <FlexContainer
-        flow="row"
-        wrap="nowrap"
-        gap="20px"
-        justifyContent="end"
-        className={styles.bottom}
-      >
-        <TransperentButton className={styles.button} onPointerDown={goToCover}>
-          돌아가기
-        </TransperentButton>
-        <TransperentButton className={styles.button}>검색하기</TransperentButton>
-      </FlexContainer>
-    </footer>
+    </>
   );
 };
 
-export default Footer;
+export default OrderItem;

@@ -1,8 +1,9 @@
 import { useState, useLayoutEffect, useContext } from 'react';
 import { CategoriesContext, RenderCategoryIdContext } from 'context';
-import Main from './Main';
-import Header from './Header';
-import Footer from './Footer';
+import CategoryNav from './CategoryNav';
+import CategoryItem from './CategoryItem';
+import OrderItem from './OrderItem';
+import Footer from 'page/Common/Footer';
 
 interface props {
   foods: FOOD[];
@@ -24,8 +25,9 @@ const MainPage = ({ foods }: props) => {
 
   return (
     <div className="page">
-      <Header categories={categories!.state} />
-      <Main foods={displayCategoryFoods} />
+      <CategoryNav categories={categories!.state} />
+      <CategoryItem foods={displayCategoryFoods} />
+      <OrderItem />
       <Footer />
     </div>
   );

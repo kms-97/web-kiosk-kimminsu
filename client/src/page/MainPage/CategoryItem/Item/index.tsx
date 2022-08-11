@@ -1,13 +1,13 @@
 import { FlexContainer, Img } from 'component';
 import { click } from 'util/pointerEvent';
-import styles from './FoodItem.module.scss';
+import styles from './Item.module.scss';
 
 interface props {
   food: FOOD;
   onClick: (id: number) => void;
 }
 
-const FoodItem = ({ food, onClick }: props) => {
+const Item = ({ food, onClick }: props) => {
   const changeSelectedFoodId = click({ callback: onClick, arg: food.id });
 
   return (
@@ -24,4 +24,4 @@ const FoodItem = ({ food, onClick }: props) => {
   );
 };
 
-export default FoodItem;
+export default Item;

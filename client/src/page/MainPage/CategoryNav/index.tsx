@@ -7,7 +7,7 @@ interface props {
   categories: CATEGORY[];
 }
 
-const Header = ({ categories }: props) => {
+const CategoryNav = ({ categories }: props) => {
   return (
     <header>
       <DragContainer>
@@ -21,4 +21,4 @@ const Header = ({ categories }: props) => {
   );
 };
 
-export default React.memo(Header);
+export default React.memo(CategoryNav);

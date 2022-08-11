@@ -1,14 +1,14 @@
 import { useContext } from 'react';
 import { FlexContainer, FlipContainer } from 'component';
 import { ActiveCategoryIdContext } from 'context';
-import CategoryPage from './CategoryPage';
+import ItemContainer from './ItemContainer';
 import styles from './Main.module.scss';
 
 interface props {
   foods: FOOD[][];
 }
 
-const Main = ({ foods }: props) => {
+const CategoryItem = ({ foods }: props) => {
   const activeCategoryId = useContext(ActiveCategoryIdContext);
 
   return (
@@ -26,7 +26,7 @@ const Main = ({ foods }: props) => {
           className={styles.container}
         >
           {foods.map((foods, index) => (
-            <CategoryPage foods={foods} key={index} />
+            <ItemContainer foods={foods} key={index} />
           ))}
         </FlexContainer>
       </FlipContainer>
@@ -34,4 +34,4 @@ const Main = ({ foods }: props) => {
   );
 };
 
-export default Main;
+export default CategoryItem;
