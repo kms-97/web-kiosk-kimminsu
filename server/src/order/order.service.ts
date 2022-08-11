@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { OrderDto } from 'src/dto/order.dto';
 import { OrderHistory } from 'src/entity/orderHistory.entity';
-import { convertDateStringToClass } from 'src/util/time';
+import { convertDateStringToClass, dateClassToString } from 'src/util/time';
 import { DataSource, InsertResult, QueryRunner } from 'typeorm';
 
 @Injectable()
@@ -10,7 +10,7 @@ export class OrderService {
 
   private async getOrderNumber(queryRunner: QueryRunner, orderDto: OrderDto) {
     const date = convertDateStringToClass(orderDto.date);
-    const dateString = `${date.year}-${date.month}-${date.date}`;
+    const dateString = dateClassToString(date);
 
     const { orderNum } = await queryRunner.manager
       .createQueryBuilder()
@@ -28,7 +28,7 @@ export class OrderService {
     orderDto: OrderDto,
   ): Promise<number> {
     const date = convertDateStringToClass(orderDto.date);
-    const dateString = `${date.year}-${date.month}-${date.date}`;
+    const dateString = dateClassToString(date);
 
     const { insertId } = await queryRunner.query(
       `insert into ORDER_HISTORY_TB (order_num, total_price, payment, create_at)
@@ -77,6 +77,7 @@ export class OrderService {
 
     await queryRunner.connect();
     await queryRunner.query('set autocommit = 0');
+    //await queryRunner.query('lock tables ORDER_HISTORY_TB write, ORDER_ITEM_TB write');
     try {
       const orderNum = await this.getOrderNumber(queryRunner, orderDto);
       const insertId = await this.insertNewOrderHistory(queryRunner, orderNum, orderDto);
@@ -90,6 +91,7 @@ export class OrderService {
       await queryRunner.manager.query('rollback');
       throw e;
     } finally {
+      //await queryRunner.manager.query('UNLOCK TABLES');
       await queryRunner.release();
     }
   }
