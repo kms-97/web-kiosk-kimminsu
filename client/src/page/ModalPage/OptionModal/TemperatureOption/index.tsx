@@ -22,7 +22,7 @@ const TemperatureOption = ({ option, temperature, selectTemperature }: props) =>
         className={styles.button}
       >
         <div>{TEMP_STRING[name]}</div>
-        <div>+{addPrice}</div>
+        {addPrice ? <div>+{addPrice}</div> : null}
       </OutlineButton>
     );
   };

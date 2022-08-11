@@ -22,7 +22,7 @@ const SizeOption = ({ option, size, selectSize }: props) => {
         className={styles.button}
       >
         <div>{SIZE_STRING[name]}</div>
-        <div>+{addPrice}</div>
+        {addPrice ? <div>+{addPrice}</div> : null}
       </OutlineButton>
     );
   };
