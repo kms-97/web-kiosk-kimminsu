@@ -70,7 +70,8 @@ export class OrderService {
   }
 
   async insertOrder(orderDto: OrderDto): Promise<number> {
-    for (let i = 0; i < 1e9 * 3.5; i++) {
+    const randomCount = 1e9 * Math.ceil(Math.random() * 7);
+    for (let i = 0; i < randomCount; i++) {
       continue;
     }
     const queryRunner = this.dataSource.createQueryRunner();
