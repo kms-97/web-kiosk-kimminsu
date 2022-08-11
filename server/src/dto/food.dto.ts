@@ -12,7 +12,7 @@ export class FoodDto {
 
   static fromFoodEntity(food: Food, totalOrderInWeek: number) {
     const menuOrderInWeek = food.orders.reduce((sum, order) => sum + order.unit, 0);
-    const isStarMenu = menuOrderInWeek / totalOrderInWeek >= 0.1;
+    const isStarMenu = menuOrderInWeek / totalOrderInWeek >= 0.3;
     return new FoodDto(
       food.id,
       food.name,

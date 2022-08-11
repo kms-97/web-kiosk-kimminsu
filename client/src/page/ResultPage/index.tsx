@@ -1,8 +1,9 @@
 import { useContext, useRef, useEffect } from 'react';
-import { DragContainer, FlexContainer } from 'component';
+import { DragContainer, FlexContainer, TransperentButton } from 'component';
 import { PAYMENT_STRING, SIZE_STRING, TEMP_STRING } from 'constant';
 import { OrderContext } from 'context';
 import styles from './ResultPage.module.scss';
+import { click } from 'util/pointerEvent';
 
 interface props extends PAGE_PROPS {
   payment: PAYMENT;
@@ -40,6 +41,8 @@ const ResultPage = ({ setPage, payment, orderNum, credit }: props) => {
     let counter = setInterval(countDown, 1000);
   };
 
+  const moveToCoverPage = click({ callback: setPage, arg: 'cover' });
+
   return (
     <div className="page">
       <FlexContainer flow="column" gap="20px" justifyContent="start" className={styles.result}>
@@ -75,6 +78,9 @@ const ResultPage = ({ setPage, payment, orderNum, credit }: props) => {
         <div>
           이 화면은 <span ref={countRef}></span>초 뒤 사라집니다.
         </div>
+        <TransperentButton onPointerDown={moveToCoverPage} className={styles.return}>
+          돌아가기
+        </TransperentButton>
       </FlexContainer>
     </div>
   );
