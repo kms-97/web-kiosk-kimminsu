@@ -1,5 +1,5 @@
 import { useContext, useEffect } from 'react';
-import { FlexContainer, OutlineButton } from 'component';
+import { BeansIcon, FlexContainer, OutlineButton } from 'component';
 import { OrderContext } from 'context';
 import { click } from 'util/pointerEvent';
 import styles from './CoverPage.module.scss';
@@ -20,12 +20,11 @@ const CoverPage = ({ setPage }: props) => {
   const startOrder = click({ callback: moveToCategoryPage });
 
   return (
-    <div className="page">
+    <div className="page" onPointerDown={startOrder}>
       <FlexContainer flow="column" className={styles.cover} justifyContent="spaceAround">
-        <div className={styles.title}>KIOSK</div>
-        <OutlineButton className={styles.button} onPointerDown={startOrder}>
-          주문하기
-        </OutlineButton>
+        <div className={styles.title}>Cafe In</div>
+        <OutlineButton className={styles.button}>터치하여 주문하기</OutlineButton>
+        <BeansIcon className={styles.icon} width="180px" height="180px"></BeansIcon>
       </FlexContainer>
     </div>
   );
