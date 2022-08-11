@@ -1,5 +1,5 @@
 import { PointerEventHandler, useContext, useLayoutEffect, useState } from 'react';
-import { FlexContainer, OutlineButton, TransperentButton } from 'component';
+import { FlexContainer, ModalContainer, OutlineButton, TransperentButton } from 'component';
 import { CreditContext, OrderContext, PageContext, PaymentContext } from 'context';
 import { click } from 'util/pointerEvent';
 import styles from './PaymentModal.module.scss';
@@ -120,9 +120,11 @@ const PaymentModal = ({ closeModal }: props) => {
   };
 
   return (
-    <div className={styles.modal}>
-      {paymentMethod === 'cash' ? <CashPage /> : <SelectMethodPage />}
-    </div>
+    <ModalContainer onPointerDown={closeModal}>
+      <div className={styles.modal}>
+        {paymentMethod === 'cash' ? <CashPage /> : <SelectMethodPage />}
+      </div>
+    </ModalContainer>
   );
 };
 

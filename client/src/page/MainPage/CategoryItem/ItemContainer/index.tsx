@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { DragContainer, FlexContainer, ModalContainer } from 'component';
+import { DragContainer, FlexContainer } from 'component';
 import { SelectedFoodContext } from 'context';
 import { click } from 'util/pointerEvent';
 import Item from '../Item';
@@ -36,13 +36,7 @@ const ItemContainer = ({ foods }: props) => {
           )}
         </FlexContainer>
       </DragContainer>
-      {selectedFood?.state ? (
-        <ModalContainer onPointerDown={closeModal}>
-          <OptionModal food={selectedFood.state} closeModal={closeModal} />
-        </ModalContainer>
-      ) : (
-        ''
-      )}
+      {selectedFood?.state ? <OptionModal food={selectedFood.state} closeModal={closeModal} /> : ''}
     </>
   );
 };

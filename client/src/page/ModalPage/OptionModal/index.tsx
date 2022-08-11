@@ -6,7 +6,7 @@ import {
   useEffect,
   useContext,
 } from 'react';
-import { FlexContainer, Img, TransperentButton } from 'component';
+import { FlexContainer, Img, ModalContainer, TransperentButton } from 'component';
 import SizeOption from './SizeOption';
 import TemperatureOption from './TemperatureOption';
 import styles from './OptionModal.module.scss';
@@ -69,43 +69,45 @@ const OptionModal = ({ food, closeModal }: props) => {
   });
 
   return (
-    <div className={styles.modal}>
-      <FlexContainer flow="column" wrap="nowrap" gap="20px" className={styles.info}>
-        <FlexContainer flow="row" wrap="nowrap" justifyContent="spaceAround">
-          <Img src={food.imgURL} description={food.name} className={styles.img} />
-          <FlexContainer flow="column" wrap="nowrap" gap="5px" className={styles.name}>
-            <div>{food.name}</div>
-            <div>{eachPrice * unit} 원</div>
+    <ModalContainer onPointerDown={closeModal}>
+      <div className={styles.modal}>
+        <FlexContainer flow="column" wrap="nowrap" gap="20px" className={styles.info}>
+          <FlexContainer flow="row" wrap="nowrap" justifyContent="spaceAround">
+            <Img src={food.imgURL} description={food.name} className={styles.img} />
+            <FlexContainer flow="column" wrap="nowrap" gap="5px" className={styles.name}>
+              <div>{food.name}</div>
+              <div>{eachPrice * unit} 원</div>
+            </FlexContainer>
           </FlexContainer>
+          <UnitOption unit={unit} increaseUnit={increaseUnit} decreaseUnit={decreaseUnit} />
+          <SizeOption
+            option={options.current.size}
+            size={selectedSize}
+            selectSize={setSelectedSize}
+          />
+          <TemperatureOption
+            option={options.current.temperature}
+            temperature={selectedTemperature}
+            selectTemperature={setSelectedTemperature}
+          />
         </FlexContainer>
-        <div>수량</div>
-        <UnitOption unit={unit} increaseUnit={increaseUnit} decreaseUnit={decreaseUnit} />
-        <div>크기</div>
-        <SizeOption
-          option={options.current.size}
-          size={selectedSize}
-          selectSize={setSelectedSize}
-        />
-        <div>온도</div>
-        <TemperatureOption
-          option={options.current.temperature}
-          temperature={selectedTemperature}
-          selectTemperature={setSelectedTemperature}
-        />
-      </FlexContainer>
-      <FlexContainer flow="row" wrap="nowrap">
-        <TransperentButton className={`${styles.button} ${styles.grey}`} onPointerDown={closeModal}>
-          취소
-        </TransperentButton>
-        <TransperentButton
-          className={`${styles.button} ${styles.primary}`}
-          onPointerDown={onClickSubmitBtn}
-          isActive={Boolean(selectedSize && selectedTemperature)}
-        >
-          완료
-        </TransperentButton>
-      </FlexContainer>
-    </div>
+        <FlexContainer flow="row" wrap="nowrap">
+          <TransperentButton
+            className={`${styles.button} ${styles.grey}`}
+            onPointerDown={closeModal}
+          >
+            취소
+          </TransperentButton>
+          <TransperentButton
+            className={`${styles.button} ${styles.primary}`}
+            onPointerDown={onClickSubmitBtn}
+            isActive={Boolean(selectedSize && selectedTemperature)}
+          >
+            완료
+          </TransperentButton>
+        </FlexContainer>
+      </div>
+    </ModalContainer>
   );
 };
 
