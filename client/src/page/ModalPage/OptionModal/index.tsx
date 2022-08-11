@@ -55,7 +55,7 @@ const OptionModal = ({ food, setSelectedFood }: props) => {
     setSelectedFood(null);
   };
 
-  const closeModal = click({ callback: setSelectedFood, arg: null });
+  const closeModal = click({ callback: setSelectedFood, arg: null, exact: true });
   const addFoodToOrder = click({
     callback: addToOrder,
     arg: {
