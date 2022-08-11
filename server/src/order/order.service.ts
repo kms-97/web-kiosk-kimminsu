@@ -70,14 +70,13 @@ export class OrderService {
   }
 
   async insertOrder(orderDto: OrderDto): Promise<number> {
-    for (let i = 0; i < 1e9 * 5; i++) {
+    for (let i = 0; i < 1e9 * 3.5; i++) {
       continue;
     }
     const queryRunner = this.dataSource.createQueryRunner();
 
     await queryRunner.connect();
-    await queryRunner.query('set autocommit = 0');
-    //await queryRunner.query('lock tables ORDER_HISTORY_TB write, ORDER_ITEM_TB write');
+    await queryRunner.startTransaction();
     try {
       const orderNum = await this.getOrderNumber(queryRunner, orderDto);
       const insertId = await this.insertNewOrderHistory(queryRunner, orderNum, orderDto);
@@ -85,13 +84,12 @@ export class OrderService {
       const insertItemPromises = this.insertOrderItems(queryRunner, orderDto, insertId);
       await Promise.all(insertItemPromises);
 
-      await queryRunner.manager.query('commit');
+      await queryRunner.commitTransaction();
       return orderNum as number;
     } catch (e) {
-      await queryRunner.manager.query('rollback');
+      await queryRunner.rollbackTransaction();
       throw e;
     } finally {
-      //await queryRunner.manager.query('UNLOCK TABLES');
       await queryRunner.release();
     }
   }
