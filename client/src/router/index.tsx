@@ -16,8 +16,8 @@ const Router = () => {
   const activePage = pages?.state ? [...pages?.state].pop() ?? DefaultPage : DefaultPage;
 
   useEffect(() => {
-    initDatas();
-  }, []);
+    if (activePage === 'cover') initDatas();
+  }, [activePage]);
 
   const initDatas = async () => {
     const foodData = getFood();
