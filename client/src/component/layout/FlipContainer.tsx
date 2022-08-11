@@ -46,7 +46,7 @@ const FlipContainer = ({ children, rightFlipEvent, leftFilpEvent, className }: p
       'transitionend',
       () => {
         ($target.style as CSSStyleDeclaration).transition = `none`;
-        ($target.style as CSSStyleDeclaration).pointerEvents = ``;
+        ($target.style as CSSStyleDeclaration).pointerEvents = `auto`;
         if (callback) callback();
       },
       { once: true },
@@ -87,9 +87,10 @@ const FlipContainer = ({ children, rightFlipEvent, leftFilpEvent, className }: p
       targetRef.current?.removeEventListener('pointerleave', mouseUpHandler);
 
       const { x: currentX } = getTranslateValues($target as HTMLElement);
+      if (currentX === -$target.clientWidth) return;
+
       const leftLimit = -$target.clientWidth * 0.5;
       const rightLimit = -$target.clientWidth * 1.5;
-
       if (currentX > leftLimit) {
         flipEndHandler({ $target, callback: leftFilpEvent, distance: 0 });
         return;
