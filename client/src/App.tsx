@@ -1,6 +1,8 @@
 import { useContext } from 'react';
 import { GeneralProvider, PageContext } from './context';
-import MainPage from './page/MainPage';
+import CoverPage from './page/CoverPage';
+
+const DefaultPage = CoverPage;
 
 function App() {
   return (
@@ -12,7 +14,7 @@ function App() {
 
 const PageContainer = () => {
   const pages = useContext(PageContext);
-  const ActivePage = pages?.state ? [...pages?.state].pop() ?? MainPage : MainPage;
+  const ActivePage = pages?.state ? [...pages?.state].pop() ?? DefaultPage : DefaultPage;
 
   return (
     <>
