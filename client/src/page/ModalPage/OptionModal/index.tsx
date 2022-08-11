@@ -1,10 +1,11 @@
 import {
   useState,
   useLayoutEffect,
-  PointerEventHandler,
   useRef,
   useEffect,
   useContext,
+  Dispatch,
+  SetStateAction,
 } from 'react';
 import { FlexContainer, Img, ModalContainer, TransperentButton } from 'component';
 import SizeOption from './SizeOption';
@@ -12,21 +13,20 @@ import TemperatureOption from './TemperatureOption';
 import styles from './OptionModal.module.scss';
 import UnitOption from './UnitOption';
 import { click } from 'util/pointerEvent';
-import { OptionContext, OrderContext, SelectedFoodContext } from 'context';
+import { OptionContext, OrderContext } from 'context';
 
 interface props {
   food: FOOD;
-  closeModal: PointerEventHandler;
+  setSelectedFood: Dispatch<SetStateAction<FOOD | null>>;
 }
 
-const OptionModal = ({ food, closeModal }: props) => {
+const OptionModal = ({ food, setSelectedFood }: props) => {
   const option = useContext(OptionContext);
   const [eachPrice, setEachPrice] = useState<number>(0);
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [selectedTemperature, setSelectedTemperature] = useState<string | null>(null);
   const [unit, setUnit] = useState<number>(1);
   const order = useContext(OrderContext);
-  const selectedFood = useContext(SelectedFoodContext);
   const options = useRef(option!.action.getById(food.id));
 
   useLayoutEffect(() => {
@@ -52,10 +52,11 @@ const OptionModal = ({ food, closeModal }: props) => {
 
   const addToOrder = (arg: ORDERFOOD) => {
     order?.action.addState(arg);
-    selectedFood?.action.setState(null);
+    setSelectedFood(null);
   };
 
-  const onClickSubmitBtn = click({
+  const closeModal = click({ callback: setSelectedFood, arg: null });
+  const addFoodToOrder = click({
     callback: addToOrder,
     arg: {
       id: food.id,
@@ -100,7 +101,7 @@ const OptionModal = ({ food, closeModal }: props) => {
           </TransperentButton>
           <TransperentButton
             className={`${styles.button} ${styles.primary}`}
-            onPointerDown={onClickSubmitBtn}
+            onPointerDown={addFoodToOrder}
             isActive={Boolean(selectedSize && selectedTemperature)}
           >
             완료
