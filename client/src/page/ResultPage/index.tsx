@@ -1,35 +1,23 @@
-import { useContext, useRef, useEffect, useLayoutEffect, useState } from 'react';
-import { postOrder } from 'api';
+import { useContext, useRef, useEffect } from 'react';
 import { FlexContainer } from 'component';
 import { PAYMENT_STRING, SIZE_STRING, TEMP_STRING } from 'constant';
-import { CreditContext, OrderContext, PageContext, PaymentContext } from 'context';
-import LoadingPage from 'page/LoadingPage';
+import { OrderContext } from 'context';
 import styles from './ResultPage.module.scss';
 
-const ResultPage = () => {
+interface props extends PAGE_PROPS {
+  payment: PAYMENT;
+  orderNum: number;
+  credit: number;
+}
+
+const ResultPage = ({ setPage, payment, orderNum, credit }: props) => {
   const orders = useContext(OrderContext);
-  const payment = useContext(PaymentContext);
-  const credit = useContext(CreditContext);
-  const page = useContext(PageContext);
-  const [isloading, setIsloading] = useState<boolean>(true);
-  const [orderNum, setOrderNum] = useState<number>(0);
   const countRef = useRef<HTMLElement>(null);
   const totalPrice = Number(orders?.action.getTotalPrice());
 
-  useLayoutEffect(() => {
-    getOrderResult();
-  }, []);
-
   useEffect(() => {
-    if (!isloading) displayCount();
-  }, [isloading]);
-
-  const getOrderResult = async () => {
-    setIsloading(true);
-    const response = await postOrder({ orders: orders?.state!, payment: payment?.state! });
-    setOrderNum(Number(response.data.orderNum));
-    setIsloading(false);
-  };
+    displayCount();
+  }, []);
 
   const displayCount = () => {
     let leftCount = 10;
@@ -42,7 +30,7 @@ const ResultPage = () => {
     const countDown = () => {
       if (leftCount === 0) {
         clearInterval(counter);
-        page?.action.moveToDefaultPage();
+        setPage('cover');
       }
 
       print();
@@ -52,12 +40,6 @@ const ResultPage = () => {
     let counter = setInterval(countDown, 1000);
   };
 
-  if (isloading)
-    return (
-      <>
-        <LoadingPage msg="결제가 진행 중입니다..." />
-      </>
-    );
   return (
     <div className="page">
       <FlexContainer flow="column" gap="20px" justifyContent="start" className={styles.result}>
@@ -75,12 +57,12 @@ const ResultPage = () => {
               ))}
             </FlexContainer>
             <FlexContainer flow="column" alignItems="start" gap="10px">
-              <div>결제 방식: {PAYMENT_STRING[payment?.state!]}</div>
+              <div>결제 방식: {PAYMENT_STRING[payment]}</div>
               <div>결제 금액: {totalPrice.toLocaleString()}원</div>
-              {payment?.state === 'cash' ? (
+              {payment === 'cash' ? (
                 <>
-                  <div>투입 금액: {credit?.state!.toLocaleString()}원</div>
-                  <div>반환 금액: {(credit?.state! - totalPrice).toLocaleString()}원</div>
+                  <div>투입 금액: {credit.toLocaleString()}원</div>
+                  <div>반환 금액: {(credit - totalPrice).toLocaleString()}원</div>
                 </>
               ) : (
                 ''

@@ -1,3 +1,7 @@
+declare interface PAGE_PROPS {
+  setPage: Dispatch<SetStateAction<PAGE>>;
+}
+
 declare interface CATEGORY {
   id: number;
   name: string;
@@ -30,6 +34,10 @@ declare interface OPTION {
 declare const SIZE = 's' | 'm' | 'l';
 
 declare const TEMPERATURE = 'h' | 'c';
+
+declare type PAYMENT = 'cash' | 'card';
+
+declare type PAGE = 'cover' | 'main' | 'order' | 'result';
 
 declare class SIZE_PRICE {
   [key: string]: number | null;

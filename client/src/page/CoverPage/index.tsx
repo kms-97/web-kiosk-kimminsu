@@ -1,11 +1,12 @@
 import { useContext, useEffect } from 'react';
 import { FlexContainer, OutlineButton } from 'component';
-import { OrderContext, PageContext } from 'context';
+import { OrderContext } from 'context';
 import { click } from 'util/pointerEvent';
 import styles from './CoverPage.module.scss';
 
-const CoverPage = () => {
-  const page = useContext(PageContext);
+interface props extends PAGE_PROPS {}
+
+const CoverPage = ({ setPage }: props) => {
   const order = useContext(OrderContext);
 
   useEffect(() => {
@@ -13,7 +14,7 @@ const CoverPage = () => {
   }, []);
 
   const moveToCategoryPage = () => {
-    page?.action.addPage('main');
+    setPage('main');
   };
 
   const startOrder = click({ callback: moveToCategoryPage });

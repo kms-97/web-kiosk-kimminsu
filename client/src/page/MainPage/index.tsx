@@ -5,11 +5,11 @@ import CategoryItem from './CategoryItem';
 import OrderItem from './OrderItem';
 import Footer from 'page/Common/Footer';
 
-interface props {
+interface props extends PAGE_PROPS {
   foods: FOOD[];
 }
 
-const MainPage = ({ foods }: props) => {
+const MainPage = ({ foods, setPage }: props) => {
   const renderCategoryId = useContext(RenderCategoryIdContext);
   const categories = useContext(CategoriesContext);
   const [displayCategoryFoods, setdisplayCategoryFoods] = useState<FOOD[][]>([[]]);
@@ -27,8 +27,8 @@ const MainPage = ({ foods }: props) => {
     <div className="page">
       <CategoryNav categories={categories!.state} />
       <CategoryItem foods={displayCategoryFoods} />
-      <OrderItem />
-      <Footer />
+      <OrderItem setPage={setPage} />
+      <Footer setPage={setPage} />
     </div>
   );
 };

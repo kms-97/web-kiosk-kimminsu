@@ -1,16 +1,19 @@
-import { useContext } from 'react';
+import { useContext, Dispatch, SetStateAction } from 'react';
 import { FlexContainer, TransperentButton } from 'component';
-import { OrderContext, PageContext } from 'context';
+import { OrderContext } from 'context';
 import { click } from 'util/pointerEvent';
 import ItemContainer from './ItemContainer';
 import styles from './OrderItem.module.scss';
 
-const OrderItem = () => {
+interface props {
+  setPage: Dispatch<SetStateAction<PAGE>>;
+}
+
+const OrderItem = ({ setPage }: props) => {
   const orders = useContext(OrderContext);
-  const page = useContext(PageContext);
   const discardAllOrders = click({ callback: orders?.action.setState!, arg: [] });
   const totalUnit = orders?.action.getTotalUnit()!;
-  const toOrderPage = click({ callback: page?.action.addPage!, arg: 'order' });
+  const toOrderPage = click({ callback: setPage, arg: 'order' });
 
   return (
     <>
