@@ -2,7 +2,7 @@
   <img src='https://user-images.githubusercontent.com/72490858/184244116-a5487bbe-48d1-41d0-803e-b502ce12f8ac.png' width='100px'>  
   <h3>키오스크 프로젝트</h3>
   
-  [데모](http://3.34.252.238:3000/) | [위키]() | [팀 노션](https://www.notion.so/b139d1d412ea4a2898458c9bba1910ef?v=78e9cdb7106445cd8f85fbb661b1288e)
+  [데모](http://3.34.252.238:3000/) | [위키](https://github.com/woowa-techcamp-2022/web-kiosk-kimminsu/wiki) | [팀 노션](https://www.notion.so/b139d1d412ea4a2898458c9bba1910ef?v=78e9cdb7106445cd8f85fbb661b1288e)
 </div>
 
 ## Built with
